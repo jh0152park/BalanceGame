@@ -1,5 +1,9 @@
 import {
+    AbsoluteCenter,
+    Box,
     Button,
+    Center,
+    Divider,
     FormControl,
     FormLabel,
     HStack,
@@ -24,8 +28,13 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
     }
 
     function onSubmit(data: FieldValues) {
+        // connect to register of backend code
         console.log(data);
     }
+
+    function onKakaoClick() {}
+
+    function onNaverClick() {}
 
     return (
         <Modal isOpen={isOpen} onClose={CloseModal} isCentered size="xl">
@@ -82,17 +91,43 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                         </VStack>
                         <HStack w="100%" justifyContent="center" mt="20px">
                             <Button
-                                px="40px"
+                                w="50%"
                                 colorScheme="purple"
                                 onClick={CloseModal}
                             >
                                 취소하기
                             </Button>
-                            <Button px="40px" colorScheme="cyan" type="submit">
+                            <Button w="50%" colorScheme="cyan" type="submit">
                                 생성하기
                             </Button>
                         </HStack>
                     </VStack>
+                    <Box position="relative" w="100%" my="30px" mx="auto">
+                        <Divider />
+                        <AbsoluteCenter px="4" pb="4px">
+                            or
+                        </AbsoluteCenter>
+                    </Box>
+                    <HStack justifyContent="center">
+                        <Button
+                            w="50%"
+                            bgColor="#FEE20A"
+                            color="black"
+                            fontWeight="bold"
+                            onClick={onKakaoClick}
+                        >
+                            카카오 회원가입
+                        </Button>
+                        <Button
+                            w="50%"
+                            bgColor="#19C048"
+                            color="black"
+                            fontWeight="bold"
+                            onClick={onNaverClick}
+                        >
+                            네이버 회원가입
+                        </Button>
+                    </HStack>
                 </ModalBody>
             </ModalContent>
         </Modal>
