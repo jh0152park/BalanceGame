@@ -1,4 +1,4 @@
-import { HStack, Heading, VStack } from "@chakra-ui/react";
+import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../Colors";
 import { CATEGORIES } from "../../ProjectTypes";
 import Category from "./Category";
@@ -18,6 +18,15 @@ export default function Header() {
                 {CATEGORIES.map((category, index) => (
                     <Category key={index} category={category} />
                 ))}
+                <Text
+                    fontWeight="bold"
+                    fontSize="18px"
+                    color="yellow.300"
+                    _hover={{ cursor: "pointer", color: "yellow.400" }}
+                    transition="all 0.1s linear"
+                >
+                    나도 질문 등록하기!
+                </Text>
             </HStack>
         </VStack>
     );
