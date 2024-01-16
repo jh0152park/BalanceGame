@@ -1,7 +1,11 @@
-import { Center, Heading, VStack } from "@chakra-ui/react";
+import { Center, Heading, VStack, useDisclosure } from "@chakra-ui/react";
 import { ColorTable } from "../Colors";
+import StartModal from "../components/home/StartModal";
 
 export default function Home() {
+    // const { isOpen, onOpen, onClose } = useDisclosure();
+    const startModal = useDisclosure();
+
     return (
         <Center w="100%" h="100vh">
             <VStack>
@@ -29,6 +33,7 @@ export default function Home() {
                             transform: "scale(1.05)",
                         }}
                         transition="all 0.2s linear"
+                        onClick={startModal.onOpen}
                     >
                         시작하기
                     </Center>
@@ -65,6 +70,11 @@ export default function Home() {
                         회원가입
                     </Center>
                 </VStack>
+
+                <StartModal
+                    isOpen={startModal.isOpen}
+                    onClose={startModal.onClose}
+                />
             </VStack>
         </Center>
     );

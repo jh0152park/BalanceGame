@@ -4,6 +4,7 @@ import React from "react";
 import Notfound from "./screens/defaults/Notfound";
 import Layout from "./screens/defaults/Layout";
 import Home from "./screens/Home";
+import Main from "./screens/Main";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
             {
                 path: "",
                 element: <Home />,
+            },
+            {
+                path: "main",
+                element: <Main />,
             },
         ],
     },
