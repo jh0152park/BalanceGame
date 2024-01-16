@@ -5,6 +5,7 @@ import Notfound from "./screens/defaults/Notfound";
 import Layout from "./screens/defaults/Layout";
 import Home from "./screens/Home";
 import Main from "./screens/Main";
+import Game from "./screens/Game";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: "main",
                 element: <Main />,
+            },
+            {
+                path: "game/:gameCategory",
+                element: <Game />,
             },
         ],
     },

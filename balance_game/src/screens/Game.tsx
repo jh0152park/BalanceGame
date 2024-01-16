@@ -1,24 +1,12 @@
-import {
-    Box,
-    Center,
-    HStack,
-    Heading,
-    VStack,
-    keyframes,
-} from "@chakra-ui/react";
+import { Box, Center, HStack, VStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { ColorTable } from "../Colors";
+import { useParams } from "react-router-dom";
 
-export default function Main() {
-    const fontColors = keyframes`
-        20% {color: gold;}
-        40% {color: dodgerblue;}
-        60% {color: lawngreen;}
-        80% {color: fuchsia;}
-        100% {color: skyblue;}
-    `;
+export default function Game() {
+    const { gameCategory } = useParams();
 
-    const animation = `${fontColors} 1s infinite`;
+    console.log(gameCategory);
 
     return (
         <>
@@ -27,11 +15,7 @@ export default function Main() {
             </Helmet>
             <Center w="100%" h="100vh">
                 <VStack mt="-300px">
-                    <Box h="70px">
-                        <Heading animation={animation} color="whitesmoke">
-                            ⬆카테고리를 선택해서 시작해보세요⬆
-                        </Heading>
-                    </Box>
+                    <Box h="70px"></Box>
                     <HStack spacing="50px">
                         <Center
                             w="500px"
