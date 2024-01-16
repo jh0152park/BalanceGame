@@ -2,8 +2,15 @@ import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../Colors";
 import { CATEGORIES } from "../../ProjectTypes";
 import Category from "./Category";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
+
+    function onLogoClick() {
+        navigate("/main");
+    }
+
     return (
         <VStack
             w="100%"
@@ -11,7 +18,12 @@ export default function Header() {
             justifyContent="space-evenly"
             alignItems="center"
         >
-            <Heading fontFamily="Rubik Burned" color={ColorTable.red}>
+            <Heading
+                fontFamily="Rubik Burned"
+                color={ColorTable.red}
+                _hover={{ cursor: "pointer" }}
+                onClick={onLogoClick}
+            >
                 Balance Game
             </Heading>
             <HStack spacing="20px" mt="10px">
