@@ -36,7 +36,7 @@ export default function StartModal({ isOpen, onClose }: IModalProps) {
                         불가능합니다!
                     </Text>
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter my="10px">
                     <Button mr="10px" colorScheme="purple" onClick={onClose}>
                         취소하기
                     </Button>
