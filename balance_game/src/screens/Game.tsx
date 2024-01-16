@@ -1,12 +1,14 @@
-import { Box, Center, HStack, VStack } from "@chakra-ui/react";
+import { Box, Center, HStack, Heading, VStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { ColorTable } from "../Colors";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Board from "../components/game/Board";
 
 export default function Game() {
     const { gameCategory } = useParams();
 
-    console.log(gameCategory);
+    // console.log(gameCategory);
 
     return (
         <>
@@ -14,33 +16,21 @@ export default function Game() {
                 <title>Main</title>
             </Helmet>
             <Center w="100%" h="100vh">
-                <VStack mt="-300px">
-                    <Box h="70px"></Box>
+                <VStack mt="-140px">
+                    <Center w="100%" h="70px">
+                        <Heading>Game Title</Heading>
+                    </Center>
                     <HStack spacing="50px">
-                        <Center
-                            w="500px"
-                            h="400px"
-                            borderRadius="20px"
+                        <Board
                             bgColor={ColorTable.red}
-                            fontWeight="bold"
-                            fontSize="50px"
-                            _hover={{ cursor: "pointer", fontSize: "60px" }}
-                            transition="all 0.2s linear"
-                        >
-                            Are you
-                        </Center>
-                        <Center
-                            w="500px"
-                            h="400px"
-                            borderRadius="20px"
+                            title="READY!"
+                            description="waiting for funny questions"
+                        />
+                        <Board
                             bgColor={ColorTable.blue}
-                            fontWeight="bold"
-                            fontSize="50px"
-                            _hover={{ cursor: "pointer", fontSize: "60px" }}
-                            transition="all 0.2s linear"
-                        >
-                            Ready?
-                        </Center>
+                            title="READY!"
+                            description="waiting for funny questions"
+                        />
                     </HStack>
                 </VStack>
             </Center>
