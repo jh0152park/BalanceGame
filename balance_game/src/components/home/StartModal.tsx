@@ -24,7 +24,7 @@ export default function StartModal({ isOpen, onClose }: IModalProps) {
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <Modal isOpen={isOpen} onClose={onClose} isCentered size="lg">
             <ModalOverlay />
             <ModalContent bgColor="black">
                 <ModalHeader>밸런스게임 시작하기</ModalHeader>
