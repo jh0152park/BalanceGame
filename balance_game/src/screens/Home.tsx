@@ -3,11 +3,12 @@ import { ColorTable } from "../Colors";
 import StartModal from "../components/home/StartModal";
 import { Helmet } from "react-helmet";
 import RegisterModal from "../components/home/RegisterModal";
+import LoginModal from "../components/home/LoginModal";
 
 export default function Home() {
-    // const { isOpen, onOpen, onClose } = useDisclosure();
     const startModal = useDisclosure();
     const registerModal = useDisclosure();
+    const loginModal = useDisclosure();
 
     return (
         <>
@@ -46,6 +47,7 @@ export default function Home() {
                                 transform: "scale(1.05)",
                             }}
                             transition="all 0.2s linear"
+                            onClick={loginModal.onOpen}
                         >
                             로그인
                         </Center>
@@ -92,6 +94,10 @@ export default function Home() {
                     <RegisterModal
                         isOpen={registerModal.isOpen}
                         onClose={registerModal.onClose}
+                    />
+                    <LoginModal
+                        isOpen={loginModal.isOpen}
+                        onClose={loginModal.onClose}
                     />
                 </VStack>
             </Center>
