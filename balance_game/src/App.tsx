@@ -1,8 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Center, Heading } from "@chakra-ui/react";
 import React from "react";
+import Notfound from "./screens/defaults/Notfound";
+import Layout from "./screens/defaults/Layout";
 
-const router = createBrowserRouter([]);
+const router = createBrowserRouter([
+    {
+        path: "/",
+        errorElement: <Notfound />,
+        element: <Layout />,
+    },
+]);
 
 function App() {
     return (
