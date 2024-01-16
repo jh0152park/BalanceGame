@@ -89,18 +89,18 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                 })}
                             />
                         </VStack>
-                        <HStack w="100%" justifyContent="center" mt="20px">
+                        <VStack w="100%" justifyContent="center" mt="20px">
                             <Button
-                                w="50%"
+                                w="100%"
                                 colorScheme="purple"
                                 onClick={CloseModal}
                             >
                                 취소하기
                             </Button>
-                            <Button w="50%" colorScheme="cyan" type="submit">
+                            <Button w="100%" colorScheme="cyan" type="submit">
                                 생성하기
                             </Button>
-                        </HStack>
+                        </VStack>
                     </VStack>
                     <Box position="relative" w="100%" my="30px" mx="auto">
                         <Divider />
@@ -108,9 +108,9 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                             or
                         </AbsoluteCenter>
                     </Box>
-                    <HStack justifyContent="center">
+                    <VStack justifyContent="center">
                         <Button
-                            w="50%"
+                            w="100%"
                             bgColor="#FEE20A"
                             color="black"
                             fontWeight="bold"
@@ -119,7 +119,7 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                             카카오 회원가입
                         </Button>
                         <Button
-                            w="50%"
+                            w="100%"
                             bgColor="#19C048"
                             color="black"
                             fontWeight="bold"
@@ -127,7 +127,7 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                         >
                             네이버 회원가입
                         </Button>
-                    </HStack>
+                    </VStack>
                 </ModalBody>
             </ModalContent>
         </Modal>

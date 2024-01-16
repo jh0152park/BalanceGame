@@ -34,7 +34,7 @@ export default function Home() {
 
                     <VStack mt="200px" spacing="20px">
                         <Center
-                            w="150px"
+                            w="250px"
                             h="50px"
                             fontWeight="bold"
                             fontSize="18px"
@@ -50,7 +50,7 @@ export default function Home() {
                             로그인
                         </Center>
                         <Center
-                            w="150px"
+                            w="250px"
                             h="50px"
                             fontWeight="bold"
                             fontSize="18px"
@@ -67,7 +67,7 @@ export default function Home() {
                             회원가입
                         </Center>
                         <Center
-                            w="150px"
+                            w="250px"
                             h="50px"
                             fontWeight="bold"
                             fontSize="18px"
