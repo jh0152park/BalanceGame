@@ -2,8 +2,8 @@
 
 사용자가 참여하는 밸런스게임 토이 프로젝트
 
-프론트엔드: [박재현(나)](https://github.com/jh0152park)
-백엔드: [김유현](https://github.com/Yuhyeon0516)
+-   프론트엔드: [박재현(나)](https://github.com/jh0152park)
+-   백엔드: [김유현](https://github.com/Yuhyeon0516)
 
 # How to API Mocking?
 
@@ -21,3 +21,27 @@ Browser환경은 말 그대로 Browser에서 접속했을때 통신되는 API에
 
 예를들어서 React 서버를 실행해 동작되는 API 처리가 임의로 만들어낸 값을 이용해 수행될 수 있도록 도와주는데,
 서두에 말한것 처럼 FE개발은 이루어졌지만 API개발이 아직 이루어지지 않았을때 MSW를 적용해 실제 API가 개발된것 처럼 테스트할 수 있다.
+
+## 사용방법
+
+### Doc:
+
+### - https://mswjs.io/docs/basics/mocking-responses
+
+### - https://mswjs.io/docs/integrations/browser
+
+### REF: https://jforj.tistory.com/364
+
+1. public directory에 msw 초기 설정
+
+    - `npx msw init public/ --save`
+    - public directory에 `mockServiceWorker.js` 파일이 생성됨
+
+2. 패키지 설치
+
+    - `npm install msw --save-dev`
+
+3. handler 및 worker 설정
+    - `/src/mocks/handlers/` path에 핸들러 정의
+    - `/src/mocks/handlers/` path에 `index.ts` 생성 후 정의한 handler를 리턴
+    - handler 정의가 끝난 후 `/src/mocks/` path에 `browser.ts` 생성 후 worker 설정
