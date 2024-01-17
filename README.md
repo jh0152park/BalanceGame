@@ -1,6 +1,9 @@
 # BalanceGame_Front
 
-Instead of me balance game frontend repository
+사용자가 참여하는 밸런스게임 토이 프로젝트
+
+프론트엔드: [박재현(나)](https://github.com/jh0152park)
+백엔드: [김유현](https://github.com/Yuhyeon0516)
 
 # How to API Mocking?
 
