@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import Main from "./screens/Main";
 import Game from "./screens/Game";
 import Mypage from "./screens/Mypage";
+import Survey from "./screens/Survey";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "mypage",
                 element: <Mypage />,
+            },
+            {
+                path: "survey",
+                element: <Survey />,
             },
             {
                 path: "game/:gameCategory",
