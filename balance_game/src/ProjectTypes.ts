@@ -50,15 +50,30 @@ export const CATEGORIES_ENG: ObjectType = {
     개쌉오바: "nightmare",
 };
 
-interface IGame {
+interface IPostGame {
     title: string;
     description: string;
 }
 
-export interface ISurvey {
+export interface IPostSurveyParams {
     category: string;
     title: string;
-    game: IGame[];
+    game: IPostGame[];
+}
+
+export interface IPostCommentParams {
+    description: string;
+}
+
+export interface IPostSignUpParams {
+    email: string;
+    password: string;
+    nickname: string;
+}
+
+export interface IPostSignUpParams {
+    email: string;
+    password: string;
 }
 
 export interface ISignUpResponse {
@@ -87,4 +102,30 @@ export interface ISignInKakaoResponse {
     email: string;
     nickname: string;
     accessToken: string;
+}
+
+interface ISingleGame {
+    gameId: number;
+    title: string;
+    description: string;
+    selectedCount: number;
+    selectedRatio: number;
+}
+
+interface IComment {
+    description: string;
+    writer: string;
+}
+
+export interface IGame {
+    gamesId: number;
+    category: string;
+    title: string;
+    like: number;
+    dislike: number;
+    createdAt: string;
+    totalPlayer: number;
+    game: ISingleGame[];
+    writer: string;
+    comment: IComment[];
 }
