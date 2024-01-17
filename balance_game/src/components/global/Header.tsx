@@ -1,13 +1,17 @@
 import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../Colors";
 import { CATEGORIES } from "../../ProjectTypes";
-import Category from "./Category";
+import CategoryButton from "./header/CategoryButton";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { CurrentCategory } from "../../global/ProjectCommon";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { CurrentCategory, IsUserLoggedIn } from "../../global/ProjectCommon";
+import SurveyButton from "./header/SurveyButton";
+import RegisterButton from "./header/RegisterButton";
+import MypageButton from "./header/MypageButton";
 
 export default function Header() {
     const navigate = useNavigate();
+    const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
 
     function onLogoClick() {
@@ -32,17 +36,12 @@ export default function Header() {
             </Heading>
             <HStack spacing="20px" mt="10px">
                 {CATEGORIES.map((category, index) => (
-                    <Category key={index} category={category} />
+                    <CategoryButton key={index} category={category} />
                 ))}
-                <Text
-                    fontWeight="bold"
-                    fontSize="18px"
-                    color="yellow.300"
-                    _hover={{ cursor: "pointer", color: "yellow.400" }}
-                    transition="all 0.1s linear"
-                >
-                    나도 질문 등록하기!
-                </Text>
+
+                <SurveyButton />
+
+                {isUserLoggedIn ? <MypageButton /> : <RegisterButton />}
             </HStack>
         </VStack>
     );
