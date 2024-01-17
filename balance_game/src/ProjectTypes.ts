@@ -49,3 +49,42 @@ export const CATEGORIES_ENG: ObjectType = {
     스포츠: "sport",
     개쌉오바: "nightmare",
 };
+
+interface IGame {
+    title: string;
+    description: string;
+}
+
+export interface ISurvey {
+    category: string;
+    title: string;
+    game: IGame[];
+}
+
+export interface ISignUpResponse {
+    uid: number;
+    email: string;
+    nickname: string;
+    accessToken: string;
+}
+
+export interface ISignInResponse {
+    uid: number;
+    email: string;
+    nickname: string;
+    accessToken: string;
+}
+
+export interface ISignInNaverResponse {
+    uid: number;
+    email: string;
+    nickname: string;
+    accessToken: string;
+}
+
+export interface ISignInKakaoResponse {
+    uid: number;
+    email: string;
+    nickname: string;
+    accessToken: string;
+}
