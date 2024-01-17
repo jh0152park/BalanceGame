@@ -3,12 +3,16 @@ import { ColorTable } from "../../Colors";
 import { CATEGORIES } from "../../ProjectTypes";
 import Category from "./Category";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { CurrentCategory } from "../../global/ProjectCommon";
 
 export default function Header() {
     const navigate = useNavigate();
+    const setCurrentCategory = useSetRecoilState(CurrentCategory);
 
     function onLogoClick() {
         navigate("/main");
+        setCurrentCategory("");
     }
 
     return (
