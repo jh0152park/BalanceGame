@@ -31,3 +31,22 @@ export async function signUpWithEmail({
     );
     return response.data;
 }
+
+export async function signInWithEmail({
+    email,
+    password,
+}: ISignUpWithEmailProps) {
+    const response = await axciosInstance.post(
+        "/auth/signin",
+        {
+            email,
+            password,
+        },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+            },
+        }
+    );
+    return response.data;
+}
