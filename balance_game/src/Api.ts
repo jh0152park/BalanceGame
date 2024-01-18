@@ -1,5 +1,9 @@
 import axios from "axios";
 import Cookie from "js-cookie";
+import { QueryFunctionContext } from "react-query";
+import { IPostSurveyParams } from "./ProjectTypes";
+import { useRecoilValue } from "recoil";
+import { UserInformation } from "./global/ProjectCommon";
 
 const axciosInstance = axios.create({
     baseURL: process.env.REACT_APP_BASE_API_URL,
@@ -52,5 +56,39 @@ export async function signInWithEmail({
             },
         }
     );
+    return response.data;
+}
+
+export async function createGame({
+    category,
+    title,
+    game,
+    accessToken,
+}: IPostSurveyParams) {
+    const response = await axciosInstance.post(
+        "/games/create",
+        {
+            category,
+            title,
+            game,
+        },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    );
+    return response.data;
+}
+
+export async function getEntireGame() {
+    const response = await axciosInstance.get("/games");
+    return response.data;
+}
+
+export async function getGame({ queryKey }: QueryFunctionContext) {
+    const [_, category] = queryKey;
+    const response = await axciosInstance.get(`/games/${category}`);
     return response.data;
 }

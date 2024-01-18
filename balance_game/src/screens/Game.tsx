@@ -4,21 +4,48 @@ import { ColorTable } from "../Colors";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Board from "../components/game/Board";
-import { CATEGORIES_ENG } from "../ProjectTypes";
+import { CATEGORIES_ENG, IGame } from "../ProjectTypes";
+import { useQuery, useQueryClient } from "react-query";
+import { getEntireGame, getGame } from "../Api";
+import { useRecoilValue } from "recoil";
+import { CurrentCategory } from "../global/ProjectCommon";
 
 export default function Game() {
-    const gameList = [];
+    // const gameList = [];
     const { gameCategory } = useParams();
+    const queryClient = useQueryClient();
+    const currentCategory = useRecoilValue(CurrentCategory);
     const category = Object.keys(CATEGORIES_ENG).find(
         (key) => CATEGORIES_ENG[key] === gameCategory
     );
+    const { isLoading, data: gameList } = useQuery<IGame[]>(
+        ["game", category],
+        category === "랜덤" ? getEntireGame : getGame
+    );
 
-    let isLoading = true;
-    const isEmpty = gameList.length === 0;
-    const emptyTitle = `${category} 카테고리에 아직 질문이 없습니다!! 로그인 후 질문을 등록해보세요.`;
+    const [isEmpty, setIsEmpty] = useState(true);
+    const emptyTitle = `${category} 카테고리에 아직 질문이 없습니다!! 로그인 후 질문을 등록해보세요!`;
     const emptyText = "내가만든 질문 등록하기!";
 
-    // console.log(gameCategory);
+    // console.log(isLoading);
+    console.log(gameList);
+
+    // useEffect(() => {
+    //     queryClient.refetchQueries(["game", currentCategory]);
+    // }, [currentCategory]);
+
+    useEffect(() => {
+        if (!isLoading) {
+            if (gameList === undefined) {
+                setIsEmpty(true);
+            } else if (gameList.length === 0) {
+                setIsEmpty(true);
+            } else {
+                setIsEmpty(false);
+            }
+            queryClient.removeQueries(["game", currentCategory]);
+        }
+    }, [isLoading]);
 
     return (
         <>
