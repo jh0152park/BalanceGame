@@ -13,11 +13,33 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { signInWithEmail } from "../../Api";
+import { ISignInResponse } from "../../ProjectTypes";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();
     const navigate = useNavigate();
     const { reset, register, handleSubmit } = useForm();
+
+    const mutation = useMutation(signInWithEmail, {
+        onMutate: () => {
+            console.log("Sign in with email mutation start");
+        },
+        onSuccess: (result: ISignInResponse) => {
+            console.log("Sign in with email mutation success");
+            console.log(result);
+        },
+        onError: (result: any) => {
+            console.log("Sign in with email mutation fail");
+            console.log(result);
+            toast({
+                status: "error",
+                title: "로그인 실패",
+                description: "이메일주소 혹은 비밀번호를 다시 확인해주세요",
+            });
+        },
+    });
 
     function CloseModal() {
         reset();
@@ -25,8 +47,19 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
     }
 
     function onSubmit(data: FieldValues) {
-        // connect to register of backend code
-        console.log(data);
+        /**
+         * Can not use {email, password}: FieldValues form
+         * Due to we have to convert type of password to string
+         */
+        const email = data.email;
+        const password = data.password.toString();
+
+        console.log(`email: ${email}, typeof email: ${typeof email}`);
+        console.log(
+            `password: ${password}, typeof password: ${typeof password}`
+        );
+
+        mutation.mutate(email, password);
     }
 
     return (

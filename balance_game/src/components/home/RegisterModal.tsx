@@ -66,7 +66,19 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
         onClose();
     }
 
-    function onSubmit({ email, password, nickname }: FieldValues) {
+    function onSubmit(data: FieldValues) {
+        const email = data.email;
+        const password = data.password.toString();
+        const nickname = data.nickname;
+
+        if (password.length < 6) {
+            toast({
+                status: "warning",
+                title: "비밀번호는 최소 6글자 이상입니다",
+            });
+            return;
+        }
+
         mutation.mutate({ email, password, nickname });
     }
 
