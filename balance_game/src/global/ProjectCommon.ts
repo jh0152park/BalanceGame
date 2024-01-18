@@ -4,6 +4,23 @@ import { ISignInResponse } from "../ProjectTypes";
 export const CurrentCategory = atom<string>({
     default: "",
     key: "CurrentCategory",
+    effects: [
+        ({ setSelf, onSet }) => {
+            const savedData = sessionStorage.getItem("CurrentCategory");
+            if (savedData) {
+                setSelf(JSON.parse(savedData));
+            }
+
+            onSet((newValue, _, isReset) => {
+                isReset
+                    ? sessionStorage.removeItem("CurrentCategory")
+                    : sessionStorage.setItem(
+                          "CurrentCategory",
+                          JSON.stringify(newValue)
+                      );
+            });
+        },
+    ],
 });
 
 export const IsUserLoggedIn = atom<boolean>({
@@ -36,4 +53,21 @@ export const UserInformation = atom<ISignInResponse>({
         accessToken: "",
     },
     key: "UserInformation",
+    effects: [
+        ({ setSelf, onSet }) => {
+            const savedData = sessionStorage.getItem("UserInformation");
+            if (savedData) {
+                setSelf(JSON.parse(savedData));
+            }
+
+            onSet((newValue, _, isReset) => {
+                isReset
+                    ? sessionStorage.removeItem("UserInformation")
+                    : sessionStorage.setItem(
+                          "UserInformation",
+                          JSON.stringify(newValue)
+                      );
+            });
+        },
+    ],
 });

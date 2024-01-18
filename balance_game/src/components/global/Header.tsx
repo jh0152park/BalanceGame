@@ -4,7 +4,11 @@ import { CATEGORIES } from "../../ProjectTypes";
 import CategoryButton from "./header/CategoryButton";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, IsUserLoggedIn } from "../../global/ProjectCommon";
+import {
+    CurrentCategory,
+    IsUserLoggedIn,
+    UserInformation,
+} from "../../global/ProjectCommon";
 import SurveyButton from "./header/SurveyButton";
 import RegisterButton from "./header/RegisterButton";
 import MypageButton from "./header/MypageButton";
@@ -13,6 +17,7 @@ export default function Header() {
     const navigate = useNavigate();
     const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
+    const userInformation = useRecoilValue(UserInformation);
 
     function onLogoClick() {
         navigate("/main");
