@@ -149,16 +149,29 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor="whiteAlpha.800"
                                 color="black"
                                 fontWeight="bold"
-                                fontSize="18px"
+                                fontSize="25px"
                             >
-                                {!isSelected
-                                    ? games[sequence[sequenceIndex]].game[0]
-                                          .description
-                                    : isLeftClick
-                                    ? games[sequence[sequenceIndex]].game[0]
-                                          .selectedCount + 1
-                                    : games[sequence[sequenceIndex]].game[0]
-                                          .selectedCount}
+                                {!isSelected ? (
+                                    games[sequence[sequenceIndex]].game[0]
+                                        .description
+                                ) : (
+                                    <VStack>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[0].selectedCount
+                                            }{" "}
+                                            표
+                                        </Text>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[0].selectedRatio
+                                            }{" "}
+                                            %
+                                        </Text>
+                                    </VStack>
+                                )}
                             </Center>
                         </VStack>
                         <VStack>
@@ -193,26 +206,34 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor="whiteAlpha.800"
                                 color="black"
                                 fontWeight="bold"
-                                fontSize="18px"
+                                fontSize="25px"
                             >
-                                {!isSelected
-                                    ? games[sequence[sequenceIndex]].game[1]
-                                          .description
-                                    : isRightClick
-                                    ? games[sequence[sequenceIndex]].game[1]
-                                          .selectedCount + 1
-                                    : games[sequence[sequenceIndex]].game[1]
-                                          .selectedCount}
+                                {!isSelected ? (
+                                    games[sequence[sequenceIndex]].game[1]
+                                        .description
+                                ) : (
+                                    <VStack>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[1].selectedCount
+                                            }{" "}
+                                            표
+                                        </Text>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[1].selectedRatio
+                                            }{" "}
+                                            %
+                                        </Text>
+                                    </VStack>
+                                )}
                             </Center>
                         </VStack>
                     </HStack>
 
-                    <Center
-                        w="100%"
-                        h="100px"
-                        mt="20px"
-                        border="1px solid white"
-                    >
+                    <Center w="100%" h="100px" mt="20px">
                         <VStack>
                             <Text fontSize="20px" fontWeight="bold">
                                 질문 작성자:{" "}
