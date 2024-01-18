@@ -19,6 +19,18 @@ import {
 import { IModalProps } from "./StartModal";
 import { FieldValues, useForm } from "react-hook-form";
 
+function getUniqStateValue() {
+    var stat_str = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+        /[xy]/g,
+        function (c) {
+            var r = (Math.random() * 16) | 0,
+                v = c === "x" ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        }
+    );
+    return stat_str;
+}
+
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {
     const { reset, register, handleSubmit } = useForm();
 
@@ -34,7 +46,12 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
 
     function onKakaoClick() {}
 
-    function onNaverClick() {}
+    function onNaverClick() {
+        const naver_client_id = process.env.REACT_APP_NAVER_CLIENT_ID;
+        const state = getUniqStateValue();
+        const redirect_uri = "http://localhost:8080/auth/social/naver/cb";
+        window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naver_client_id}&state=${state}&redirect_uri=${redirect_uri}`;
+    }
 
     return (
         <Modal isOpen={isOpen} onClose={CloseModal} isCentered size="xl">

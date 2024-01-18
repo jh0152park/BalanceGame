@@ -8,6 +8,7 @@ import Main from "./screens/Main";
 import Game from "./screens/Game";
 import Mypage from "./screens/Mypage";
 import Survey from "./screens/Survey";
+import Social from "./screens/Social";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,18 @@ const router = createBrowserRouter([
             {
                 path: "game/:gameCategory",
                 element: <Game />,
+            },
+        ],
+    },
+    // social 로그인 시 리다이렉션 할 url
+    {
+        path: "/auth",
+        errorElement: <Notfound />,
+        element: <Layout />,
+        children: [
+            {
+                path: "social/:uid/:email/:nickname/:accessToken",
+                element: <Social />,
             },
         ],
     },
