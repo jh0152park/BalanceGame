@@ -117,3 +117,22 @@ export async function createComment({
     );
     return response.data;
 }
+
+interface ISelect {
+    gamesId: string | number;
+    gameId: string | number;
+}
+export async function selectSurvey({ gamesId, gameId }: ISelect) {
+    const response = await axciosInstance.post(
+        `/games/${gamesId}/select`,
+        {
+            gameId,
+        },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+            },
+        }
+    );
+    return response.data;
+}

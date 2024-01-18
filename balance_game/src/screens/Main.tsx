@@ -25,8 +25,8 @@ export default function Main() {
             <Helmet>
                 <title>Main</title>
             </Helmet>
-            <Center w="100%" h="100vh">
-                <VStack mt="-300px">
+            <VStack w="100%" h="100vh">
+                <VStack mt="95px">
                     <Box h="70px">
                         <Heading animation={animation} color="whitesmoke">
                             ⬆카테고리를 선택해서 시작해보세요⬆
@@ -59,7 +59,7 @@ export default function Main() {
                         </Center>
                     </HStack>
                 </VStack>
-            </Center>
+            </VStack>
         </>
     );
 }

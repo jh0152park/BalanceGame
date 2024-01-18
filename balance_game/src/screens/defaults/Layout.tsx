@@ -7,7 +7,7 @@ export default function Layout() {
     const is_home = location.pathname === "/";
 
     return (
-        <Box w="100%" h="100vh" p="30px">
+        <Box w="100%" minH="100vh" p="30px">
             {!is_home && <Header />}
             <Outlet />
         </Box>
