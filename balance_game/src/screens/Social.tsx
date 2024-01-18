@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function Social() {
     const param = useParams();
 
-    // param에 uid, email, nickname, accessToken 달려있음
+    // param에 uid, email, nickname, accessToken 달려있음(네이버, 카카오 모두 동일)
     // 위 정보 저장 후 다시 리다이렉션 필요
     console.log(param);
 

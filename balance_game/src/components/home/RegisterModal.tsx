@@ -44,13 +44,17 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
         console.log(data);
     }
 
-    function onKakaoClick() {}
+    function onKakaoClick() {
+        const kakaoClientId = process.env.REACT_APP_KAKAO_RESTAPI_KEY;
+        const redirectUri = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${kakaoClientId}&redirect_uri=${redirectUri}`;
+    }
 
     function onNaverClick() {
-        const naver_client_id = process.env.REACT_APP_NAVER_CLIENT_ID;
+        const naverClientId = process.env.REACT_APP_NAVER_CLIENT_ID;
         const state = getUniqStateValue();
-        const redirect_uri = "http://localhost:8080/auth/social/naver/cb";
-        window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naver_client_id}&state=${state}&redirect_uri=${redirect_uri}`;
+        const redirectUri = process.env.REACT_APP_NAVER_REDIRECT_URI;
+        window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&state=${state}&redirect_uri=${redirectUri}`;
     }
 
     return (
