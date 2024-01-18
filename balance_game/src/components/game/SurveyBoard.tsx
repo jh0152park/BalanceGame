@@ -15,6 +15,7 @@ import { useSetRecoilState } from "recoil";
 import { CurrentCategory } from "../../global/ProjectCommon";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
+import Comment from "./Comment";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
@@ -39,6 +40,8 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         setIsSelected(false);
         setIsLeftClick(false);
         setIsRightClick(false);
+        setLikeClick(false);
+        setDisLikeClick(false);
         setSequenceIndex((prev) => prev + 1);
     }
 
@@ -79,7 +82,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         sequenceGenerator();
     }, []);
 
-    // console.log(games);
+    console.log(games);
     // console.log(sequence);
     return (
         <>
@@ -149,16 +152,29 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor="whiteAlpha.800"
                                 color="black"
                                 fontWeight="bold"
-                                fontSize="18px"
+                                fontSize="25px"
                             >
-                                {!isSelected
-                                    ? games[sequence[sequenceIndex]].game[0]
-                                          .description
-                                    : isLeftClick
-                                    ? games[sequence[sequenceIndex]].game[0]
-                                          .selectedCount + 1
-                                    : games[sequence[sequenceIndex]].game[0]
-                                          .selectedCount}
+                                {!isSelected ? (
+                                    games[sequence[sequenceIndex]].game[0]
+                                        .description
+                                ) : (
+                                    <VStack>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[0].selectedCount
+                                            }{" "}
+                                            표
+                                        </Text>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[0].selectedRatio
+                                            }{" "}
+                                            %
+                                        </Text>
+                                    </VStack>
+                                )}
                             </Center>
                         </VStack>
                         <VStack>
@@ -193,26 +209,34 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor="whiteAlpha.800"
                                 color="black"
                                 fontWeight="bold"
-                                fontSize="18px"
+                                fontSize="25px"
                             >
-                                {!isSelected
-                                    ? games[sequence[sequenceIndex]].game[1]
-                                          .description
-                                    : isRightClick
-                                    ? games[sequence[sequenceIndex]].game[1]
-                                          .selectedCount + 1
-                                    : games[sequence[sequenceIndex]].game[1]
-                                          .selectedCount}
+                                {!isSelected ? (
+                                    games[sequence[sequenceIndex]].game[1]
+                                        .description
+                                ) : (
+                                    <VStack>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[1].selectedCount
+                                            }{" "}
+                                            표
+                                        </Text>
+                                        <Text>
+                                            {
+                                                games[sequence[sequenceIndex]]
+                                                    .game[1].selectedRatio
+                                            }{" "}
+                                            %
+                                        </Text>
+                                    </VStack>
+                                )}
                             </Center>
                         </VStack>
                     </HStack>
 
-                    <Center
-                        w="100%"
-                        h="100px"
-                        mt="20px"
-                        border="1px solid white"
-                    >
+                    <Center w="100%" h="100px" mt="20px">
                         <VStack>
                             <Text fontSize="20px" fontWeight="bold">
                                 질문 작성자:{" "}
@@ -266,6 +290,11 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             </HStack>
                         </VStack>
                     </Center>
+
+                    <Comment
+                        gamesId={games[sequence[sequenceIndex]].gamesId}
+                        comment={games[sequence[sequenceIndex]].comment}
+                    />
                 </Box>
             ))}
         </>

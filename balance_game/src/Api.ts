@@ -92,3 +92,28 @@ export async function getGame({ queryKey }: QueryFunctionContext) {
     const response = await axciosInstance.get(`/games/${category}`);
     return response.data;
 }
+
+interface ICreateComment {
+    gamesId: string | number;
+    description: string;
+    accessToken: string;
+}
+export async function createComment({
+    gamesId,
+    description,
+    accessToken,
+}: ICreateComment) {
+    const response = await axciosInstance.post(
+        `/games/${gamesId}/comment`,
+        {
+            description,
+        },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    );
+    return response.data;
+}
