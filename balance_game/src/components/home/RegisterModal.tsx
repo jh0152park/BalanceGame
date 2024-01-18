@@ -14,22 +14,60 @@ import {
     ModalContent,
     ModalHeader,
     ModalOverlay,
+    Text,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
 import { IModalProps } from "./StartModal";
 import { FieldValues, useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { signUpWithEmail } from "../../Api";
+import { ISignUpResponse } from "../../ProjectTypes";
 
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {
-    const { reset, register, handleSubmit } = useForm();
+    const {
+        reset,
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const toast = useToast();
+
+    const mutation = useMutation(signUpWithEmail, {
+        onMutate: () => {
+            console.log("signup with email mutation start");
+        },
+        onSuccess: (result: ISignUpResponse) => {
+            // console.log("mutate success");
+            // console.log(result);
+
+            toast({
+                status: "success",
+                title: "회원가입 성공",
+                description: "로그인 후 이용해 주세요!",
+            });
+            CloseModal();
+        },
+        onError: (result: any) => {
+            // console.log("mutate error");
+            // console.log(result);
+            // console.log(result.response.data.message);
+            toast({
+                status: "error",
+                title: "회원가입 실패",
+                description: result.response.data.message,
+            });
+            CloseModal();
+        },
+    });
 
     function CloseModal() {
         reset();
         onClose();
     }
 
-    function onSubmit(data: FieldValues) {
-        // connect to register of backend code
-        console.log(data);
+    function onSubmit({ email, password, nickname }: FieldValues) {
+        mutation.mutate({ email, password, nickname });
     }
 
     function onKakaoClick() {}
@@ -56,7 +94,10 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                     color: "whitesmoke",
                                     fontsize: "15px",
                                 }}
-                                {...register("email", { required: true })}
+                                {...register("email", {
+                                    required: "이메일주소",
+                                })}
+                                isInvalid={Boolean(errors.email?.message)}
                             />
                             <Input
                                 placeholder="비밀번호"
@@ -70,8 +111,9 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                     fontsize: "15px",
                                 }}
                                 {...register("password", {
-                                    required: true,
+                                    required: "비밀번호",
                                 })}
+                                isInvalid={Boolean(errors.password?.message)}
                             />
                             <Input
                                 placeholder="닉네임"
@@ -85,9 +127,15 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                     fontsize: "15px",
                                 }}
                                 {...register("nickname", {
-                                    required: true,
+                                    required: "닉네임",
                                 })}
+                                isInvalid={Boolean(errors.nickname?.message)}
                             />
+                            {/* <Text color="red.300" fontWeight="bold">
+                                {errors.email?.message as ""}
+                                {errors.password?.message as ""}
+                                {errors.nickname?.message as ""}
+                            </Text> */}
                         </VStack>
                         <VStack w="100%" justifyContent="center" mt="20px">
                             <Button
