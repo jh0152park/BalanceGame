@@ -15,6 +15,7 @@ import { useSetRecoilState } from "recoil";
 import { CurrentCategory } from "../../global/ProjectCommon";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
+import Comment from "./Comment";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
@@ -39,6 +40,8 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         setIsSelected(false);
         setIsLeftClick(false);
         setIsRightClick(false);
+        setLikeClick(false);
+        setDisLikeClick(false);
         setSequenceIndex((prev) => prev + 1);
     }
 
@@ -79,7 +82,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         sequenceGenerator();
     }, []);
 
-    // console.log(games);
+    console.log(games);
     // console.log(sequence);
     return (
         <>
@@ -287,6 +290,11 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             </HStack>
                         </VStack>
                     </Center>
+
+                    <Comment
+                        gamesId={games[sequence[sequenceIndex]].gamesId}
+                        comment={games[sequence[sequenceIndex]].comment}
+                    />
                 </Box>
             ))}
         </>

@@ -113,9 +113,10 @@ interface ISingleGame {
     selectedRatio: number;
 }
 
-interface IComment {
+export interface IComment {
     description: string;
     writer: string;
+    createdAt: string;
 }
 
 export interface IGame {
