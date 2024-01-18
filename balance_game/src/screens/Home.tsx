@@ -4,11 +4,16 @@ import StartModal from "../components/home/StartModal";
 import { Helmet } from "react-helmet";
 import RegisterModal from "../components/home/RegisterModal";
 import LoginModal from "../components/home/LoginModal";
+import { useSetRecoilState } from "recoil";
+import { CurrentCategory } from "../global/ProjectCommon";
 
 export default function Home() {
     const startModal = useDisclosure();
     const registerModal = useDisclosure();
     const loginModal = useDisclosure();
+    const setCurrentCategory = useSetRecoilState(CurrentCategory);
+
+    setCurrentCategory("");
 
     return (
         <>
