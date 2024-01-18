@@ -200,6 +200,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor={ColorTable.red}
                                 fontWeight="bold"
                                 fontSize="50px"
+                                textAlign="center"
                                 _hover={{ cursor: "pointer", fontSize: "60px" }}
                                 transition="all 0.1s linear"
                                 position="relative"
@@ -225,6 +226,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 color="black"
                                 fontWeight="bold"
                                 fontSize="25px"
+                                textAlign="center"
                             >
                                 {!isSelected ? (
                                     games[sequence[sequenceIndex]].game[0]
@@ -257,6 +259,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 bgColor={ColorTable.blue}
                                 fontWeight="bold"
                                 fontSize="50px"
+                                textAlign="center"
                                 _hover={{ cursor: "pointer", fontSize: "60px" }}
                                 transition="all 0.1s linear"
                                 position="relative"
@@ -282,6 +285,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 color="black"
                                 fontWeight="bold"
                                 fontSize="25px"
+                                textAlign="center"
                             >
                                 {!isSelected ? (
                                     games[sequence[sequenceIndex]].game[1]
