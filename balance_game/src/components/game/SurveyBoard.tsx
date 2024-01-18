@@ -16,6 +16,8 @@ import { CurrentCategory } from "../../global/ProjectCommon";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
 import Comment from "./Comment";
+import { useMutation } from "react-query";
+import { selectSurvey } from "../../Api";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
@@ -29,6 +31,21 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
     // relate like
     const [likeClick, setLikeClick] = useState(false);
     const [disLikeClick, setDisLikeClick] = useState(false);
+
+    // mutation
+    const seleceMutation = useMutation(selectSurvey, {
+        onMutate: () => {
+            console.log("select mutation start");
+        },
+        onSuccess: (result) => {
+            console.log("select mutation success");
+            console.log(result);
+        },
+        onError: (result) => {
+            console.log("select mutation failed");
+            console.log(result);
+        },
+    });
 
     function nextSurvey() {
         if (sequenceIndex === games.length - 1) {
@@ -48,11 +65,17 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
     function leftSurveyClick() {
         setIsLeftClick(true);
         setIsSelected(true);
+        const gamesId = games[sequence[sequenceIndex]].gamesId;
+        const gameId = games[sequence[sequenceIndex]].game[0].gameId;
+        seleceMutation.mutate({ gamesId, gameId });
     }
 
     function rightSurveyClick() {
         setIsRightClick(true);
         setIsSelected(true);
+        const gamesId = games[sequence[sequenceIndex]].gamesId;
+        const gameId = games[sequence[sequenceIndex]].game[1].gameId;
+        seleceMutation.mutate({ gamesId, gameId });
     }
 
     function sequenceGenerator() {
@@ -82,7 +105,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         sequenceGenerator();
     }, []);
 
-    console.log(games);
+    // console.log(games);
     // console.log(sequence);
     return (
         <>

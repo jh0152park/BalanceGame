@@ -30,6 +30,7 @@ export default function Header() {
             h="100px"
             justifyContent="space-evenly"
             alignItems="center"
+            zIndex="99"
         >
             <Heading
                 fontFamily="Rubik Burned"

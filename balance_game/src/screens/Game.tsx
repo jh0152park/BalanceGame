@@ -44,8 +44,8 @@ export default function Game() {
             <Helmet>
                 <title>Main</title>
             </Helmet>
-            <Center w="100%" h="100vh">
-                <VStack mt="-140px">
+            <VStack w="100%" minH="100vh">
+                <VStack mt="95px">
                     {isLoading || gameList === undefined ? (
                         <LoadingBoard />
                     ) : isEmpty ? (
@@ -54,7 +54,7 @@ export default function Game() {
                         <SurveyBoard games={gameList} />
                     )}
                 </VStack>
-            </Center>
+            </VStack>
         </>
     );
 }
