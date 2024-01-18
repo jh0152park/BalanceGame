@@ -136,3 +136,13 @@ export async function selectSurvey({ gamesId, gameId }: ISelect) {
     );
     return response.data;
 }
+
+export async function likeSurvey({ gamesId }: { gamesId: string | number }) {
+    const response = await axciosInstance.get(`/games/${gamesId}/like`);
+    return response.data;
+}
+
+export async function disLikeSurvey({ gamesId }: { gamesId: string | number }) {
+    const response = await axciosInstance.get(`/games/${gamesId}/dislike`);
+    return response.data;
+}
