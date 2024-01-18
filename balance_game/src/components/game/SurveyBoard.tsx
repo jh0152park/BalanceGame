@@ -17,7 +17,8 @@ import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
 import Comment from "./Comment";
 import { useMutation } from "react-query";
-import { selectSurvey } from "../../Api";
+import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
+import { go_to_top } from "../../utils/util";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
@@ -47,10 +48,42 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         },
     });
 
+    const likeMutation = useMutation(likeSurvey, {
+        onMutate: () => {
+            console.log("like mutation start");
+        },
+        onSuccess: (result) => {
+            console.log("like mutation success");
+            console.log(result);
+        },
+        onError: (result) => {
+            console.log("like mutation failed");
+            console.log(result);
+        },
+    });
+
+    const disLikeMutation = useMutation(disLikeSurvey, {
+        onMutate: () => {
+            console.log("like mutation start");
+        },
+        onSuccess: (result) => {
+            console.log("like mutation success");
+            console.log(result);
+        },
+        onError: (result) => {
+            console.log("like mutation failed");
+            console.log(result);
+        },
+    });
+
     function nextSurvey() {
+        getLikeMutation();
+        getDisLikeMutation();
+
         if (sequenceIndex === games.length - 1) {
             navigate("/main");
             setCurrentCategory("");
+            go_to_top(0);
             return;
         }
 
@@ -99,6 +132,22 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
 
     function toggleDisLike() {
         setDisLikeClick((prev) => !prev);
+    }
+
+    function getLikeMutation() {
+        if (!likeClick) {
+            return;
+        }
+        const gamesId = games[sequence[sequenceIndex]].gamesId;
+        likeMutation.mutate({ gamesId });
+    }
+
+    function getDisLikeMutation() {
+        if (!disLikeClick) {
+            return;
+        }
+        const gamesId = games[sequence[sequenceIndex]].gamesId;
+        disLikeMutation.mutate({ gamesId });
     }
 
     useEffect(() => {
