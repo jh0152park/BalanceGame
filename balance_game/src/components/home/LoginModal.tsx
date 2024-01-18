@@ -16,11 +16,15 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signInWithEmail } from "../../Api";
 import { ISignInResponse } from "../../ProjectTypes";
+import { useSetRecoilState } from "recoil";
+import { IsUserLoggedIn, UserInformation } from "../../global/ProjectCommon";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();
     const navigate = useNavigate();
     const { reset, register, handleSubmit } = useForm();
+    const setIsUserLoggedIn = useSetRecoilState(IsUserLoggedIn);
+    const setUserInformation = useSetRecoilState(UserInformation);
 
     const mutation = useMutation(signInWithEmail, {
         onMutate: () => {
@@ -28,16 +32,34 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
         },
         onSuccess: (result: ISignInResponse) => {
             console.log("Sign in with email mutation success");
-            console.log(result);
+            // console.log(result);
+
+            setUserInformation({
+                uid: result.uid,
+                email: result.email,
+                nickname: result.nickname,
+                accessToken: result.accessToken,
+            });
+            setIsUserLoggedIn(true);
+
+            toast({
+                status: "success",
+                title: "로그인 성공",
+                description: `환영합니다 ${result.nickname}님`,
+            });
+
+            CloseModal();
+            navigate("/main");
         },
         onError: (result: any) => {
             console.log("Sign in with email mutation fail");
-            console.log(result);
+            // console.log(result);
             toast({
                 status: "error",
                 title: "로그인 실패",
                 description: "이메일주소 혹은 비밀번호를 다시 확인해주세요",
             });
+            CloseModal();
         },
     });
 
@@ -54,12 +76,7 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
         const email = data.email;
         const password = data.password.toString();
 
-        console.log(`email: ${email}, typeof email: ${typeof email}`);
-        console.log(
-            `password: ${password}, typeof password: ${typeof password}`
-        );
-
-        mutation.mutate(email, password);
+        mutation.mutate({ email, password });
     }
 
     return (

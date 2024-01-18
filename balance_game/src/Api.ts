@@ -32,10 +32,14 @@ export async function signUpWithEmail({
     return response.data;
 }
 
+interface ISignInWithEmailProps {
+    email: string;
+    password: string;
+}
 export async function signInWithEmail({
     email,
     password,
-}: ISignUpWithEmailProps) {
+}: ISignInWithEmailProps) {
     const response = await axciosInstance.post(
         "/auth/signin",
         {
