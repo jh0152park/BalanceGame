@@ -59,6 +59,7 @@ export interface IPostSurveyParams {
     category: string;
     title: string;
     game: IPostGame[];
+    accessToken: string;
 }
 
 export interface IPostCommentParams {
@@ -112,9 +113,10 @@ interface ISingleGame {
     selectedRatio: number;
 }
 
-interface IComment {
+export interface IComment {
     description: string;
     writer: string;
+    createdAt: string;
 }
 
 export interface IGame {
