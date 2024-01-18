@@ -40,7 +40,6 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
-    "homepage": "https://jh0152park.github.io/BalanceGame_Front",
     "eslintConfig": {
         "extends": [
             "react-app",
