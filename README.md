@@ -45,3 +45,11 @@ Browser환경은 말 그대로 Browser에서 접속했을때 통신되는 API에
     - `/src/mocks/handlers/` path에 핸들러 정의
     - `/src/mocks/handlers/` path에 `index.ts` 생성 후 정의한 handler를 리턴
     - handler 정의가 끝난 후 `/src/mocks/` path에 `browser.ts` 생성 후 worker 설정
+
+
+# 실행화면
+![image](https://github.com/jh0152park/BalanceGame_Front/assets/118165975/91458fd2-984f-4769-92a6-3d9967540e7a)
+
+![image](https://github.com/jh0152park/BalanceGame_Front/assets/118165975/15c0d294-22c0-45af-9edd-2418461641e7)
+
+![image](https://github.com/jh0152park/BalanceGame_Front/assets/118165975/0927c48f-b218-4630-905e-95f755efe897)
