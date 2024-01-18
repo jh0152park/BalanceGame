@@ -59,6 +59,7 @@ export interface IPostSurveyParams {
     category: string;
     title: string;
     game: IPostGame[];
+    accessToken: string;
 }
 
 export interface IPostCommentParams {
