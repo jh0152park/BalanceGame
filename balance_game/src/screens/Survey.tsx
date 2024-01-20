@@ -12,12 +12,44 @@ import { CATEGORIES } from "../ProjectTypes";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "react-query";
+import { createGame } from "../Api";
+import { useRecoilValue } from "recoil";
+import { UserInformation } from "../global/ProjectCommon";
+import { go_to_top } from "../utils/util";
 
 export default function Survey() {
     const toast = useToast();
     const navigate = useNavigate();
     const [category, setCategory] = useState("");
     const { register, reset, handleSubmit } = useForm();
+    const userInformation = useRecoilValue(UserInformation);
+
+    const mutation = useMutation(createGame, {
+        onMutate: () => {
+            console.log("post survey start");
+        },
+        onSuccess: (result) => {
+            console.log("post survey success");
+            // console.log(result);
+            toast({
+                status: "success",
+                title: "질문지 등록 성공",
+            });
+            reset();
+            navigate("/main");
+            go_to_top(0);
+        },
+        onError: (result: any) => {
+            console.log("post survey error");
+            // console.log(result);
+            toast({
+                status: "error",
+                title: "질문지 등록 실패",
+                description: result.response.data.message,
+            });
+        },
+    });
 
     function onSubmit(data: FieldValues) {
         if (category === "") {
@@ -28,12 +60,20 @@ export default function Survey() {
             return;
         }
 
-        console.log(category);
-        console.log(data);
+        const title = data.title;
+        const game = [
+            {
+                title: data.game_title1,
+                description: data.game_description1,
+            },
+            {
+                title: data.game_title2,
+                description: data.game_description2,
+            },
+        ];
+        const accessToken = userInformation.accessToken;
 
-        // post 날리고
-        // 리셋하고
-        // 맨첨으로 복귀
+        mutation.mutate({ category, title, game, accessToken });
     }
 
     return (
