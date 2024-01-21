@@ -3,10 +3,7 @@
 .env
 
 # dependencies
-/src/components
-/src/global
-/src/screens
-/src/utils
+
 
 /node_modules
 /.pnp
