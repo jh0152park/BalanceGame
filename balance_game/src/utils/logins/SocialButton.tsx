@@ -1,4 +1,5 @@
 import { Center, HStack, Image, Text } from "@chakra-ui/react";
+import { onKakaoClick, onNaverClick } from "./SocialLogin";
 
 interface IProps {
     width?: number;
@@ -22,8 +23,25 @@ export default function SocialButton({
     logoUrl,
     social,
 }: IProps) {
+    function onSocialLoginClick() {
+        if (social === "카카오") {
+            onKakaoClick();
+        } else {
+            onNaverClick();
+        }
+    }
+
     return (
-        <Center w="100%" h={`${height}px`} bgColor={bgColor} borderRadius="5px">
+        <Center
+            w="100%"
+            h={`${height}px`}
+            bgColor={bgColor}
+            borderRadius="5px"
+            _hover={{
+                cursor: "pointer",
+            }}
+            onClick={onSocialLoginClick}
+        >
             <HStack>
                 <Image
                     w={`${logoWidth}px`}
