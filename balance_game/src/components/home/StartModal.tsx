@@ -37,10 +37,14 @@ export default function StartModal({ isOpen, onClose }: IModalProps) {
                     </Text>
                 </ModalBody>
                 <ModalFooter my="10px">
-                    <Button mr="10px" colorScheme="purple" onClick={onClose}>
+                    <Button mr="10px" bgColor="purple.300" onClick={onClose}>
                         취소하기
                     </Button>
-                    <Button mr="10px" colorScheme="cyan" onClick={onStartClick}>
+                    <Button
+                        mr="10px"
+                        bgColor="purple.300"
+                        onClick={onStartClick}
+                    >
                         시작하기
                     </Button>
                 </ModalFooter>

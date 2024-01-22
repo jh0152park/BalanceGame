@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { IModalProps } from "./StartModal";
 import {
     Button,
+    HStack,
     Input,
     Modal,
     ModalBody,
@@ -18,6 +19,7 @@ import { signInWithEmail } from "../../Api";
 import { ISignInResponse } from "../../ProjectTypes";
 import { useSetRecoilState } from "recoil";
 import { IsUserLoggedIn, UserInformation } from "../../global/ProjectCommon";
+import SocialButton from "../../utils/logins/SocialButton";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();
@@ -25,6 +27,9 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const { reset, register, handleSubmit } = useForm();
     const setIsUserLoggedIn = useSetRecoilState(IsUserLoggedIn);
     const setUserInformation = useSetRecoilState(UserInformation);
+
+    const kakaoLogo = require("../../resource/카카오_로고.png");
+    const naverLogo = require("../../resource/네이버_로고.png");
 
     const mutation = useMutation(signInWithEmail, {
         onMutate: () => {
@@ -80,12 +85,12 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={CloseModal} isCentered size="lg">
+        <Modal isOpen={isOpen} onClose={CloseModal} isCentered size="xl">
             <ModalOverlay />
             <ModalContent bgColor="black">
                 <ModalHeader>로그인</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody p="20px">
+                <ModalBody p="35px">
                     <VStack
                         spacing="20px"
                         w="100%"
@@ -120,16 +125,40 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
                                 required: true,
                             })}
                         />
-                        <Button
-                            w="100%"
-                            colorScheme="purple"
-                            onClick={CloseModal}
-                        >
-                            취소하기
-                        </Button>
-                        <Button w="100%" colorScheme="cyan" type="submit">
-                            로그인
-                        </Button>
+                        <HStack w="100%">
+                            <Button w="100%" bgColor="purple.300" type="submit">
+                                로그인
+                            </Button>
+                            <Button
+                                w="100%"
+                                bgColor="purple.300"
+                                onClick={CloseModal}
+                            >
+                                취소하기
+                            </Button>
+                        </HStack>
+                        <VStack w="100%">
+                            <SocialButton
+                                width={400}
+                                height={40}
+                                logoWidth={20}
+                                logoHeight={20}
+                                logoColor="#000000"
+                                bgColor="#FEE500"
+                                logoUrl={kakaoLogo}
+                                social="카카오"
+                            />
+                            <SocialButton
+                                width={400}
+                                height={40}
+                                logoWidth={20}
+                                logoHeight={20}
+                                logoColor="#FFFFFF"
+                                bgColor="#03C75A"
+                                logoUrl={naverLogo}
+                                social="네이버"
+                            />
+                        </VStack>
                     </VStack>
                 </ModalBody>
             </ModalContent>
