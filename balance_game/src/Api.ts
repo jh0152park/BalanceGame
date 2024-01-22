@@ -146,3 +146,19 @@ export async function disLikeSurvey({ gamesId }: { gamesId: string | number }) {
     const response = await axciosInstance.get(`/games/${gamesId}/dislike`);
     return response.data;
 }
+
+export async function logout() {
+    const response = await axciosInstance.get("/auth/signout");
+    return response.data;
+}
+
+export async function getUserInformation({ queryKey }: QueryFunctionContext) {
+    const [_, accessToken] = queryKey;
+    const response = await axciosInstance.get(`/auth/my`, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+            Authorization: `Bearer ${accessToken}`,
+        },
+    });
+    return response.data;
+}
