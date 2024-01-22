@@ -1,13 +1,18 @@
 import { Text, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, IsUserLoggedIn } from "../../../global/ProjectCommon";
+import {
+    CurrentCategory,
+    CurrentMode,
+    IsUserLoggedIn,
+} from "../../../global/ProjectCommon";
 
 export default function SurveyButton() {
     const toast = useToast();
     const navigate = useNavigate();
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
     const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
 
     function onButtonClick() {
         // check user already logged in or not
@@ -26,7 +31,7 @@ export default function SurveyButton() {
     return (
         <Text
             fontWeight="bold"
-            fontSize="18px"
+            fontSize={isMobile ? "15px" : "18px"}
             color="yellow.300"
             _hover={{ cursor: "pointer", color: "yellow.400" }}
             transition="all 0.1s linear"

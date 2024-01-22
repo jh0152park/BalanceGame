@@ -1,15 +1,15 @@
-import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Grid, HStack, Heading, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../Colors";
-import { CATEGORIES } from "../../ProjectTypes";
-import CategoryButton from "./header/CategoryButton";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { CurrentCategory, IsUserLoggedIn } from "../../global/ProjectCommon";
+import { CATEGORIES } from "../../ProjectTypes";
+import CategoryButton from "./header/CategoryButton";
 import SurveyButton from "./header/SurveyButton";
-import RegisterButton from "./header/RegisterButton";
 import MypageButton from "./header/MypageButton";
+import RegisterButton from "./header/RegisterButton";
 
-export default function Header() {
+export default function HeaderMobile() {
     const navigate = useNavigate();
     const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
@@ -20,13 +20,7 @@ export default function Header() {
     }
 
     return (
-        <VStack
-            w="100%"
-            h="100px"
-            justifyContent="space-evenly"
-            alignItems="center"
-            zIndex="99"
-        >
+        <VStack w="100%" h="100px" zIndex="99">
             <Heading
                 fontFamily="Rubik Burned"
                 color={ColorTable.red}
@@ -35,13 +29,13 @@ export default function Header() {
             >
                 Balance Game
             </Heading>
-            <HStack spacing="20px" mt="10px">
+            <Grid templateColumns="repeat(5, 1fr)" gap="10px" mt="15px">
                 {CATEGORIES.map((category, index) => (
                     <CategoryButton key={index} category={category} />
                 ))}
-
+            </Grid>
+            <HStack justifyContent="center" w="100%" mt="10px" spacing="30px">
                 <SurveyButton />
-
                 {isUserLoggedIn ? <MypageButton /> : <RegisterButton />}
             </HStack>
         </VStack>

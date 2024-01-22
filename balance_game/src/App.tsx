@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Center, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Notfound from "./screens/defaults/Notfound";
 import Layout from "./screens/defaults/Layout";
 import Home from "./screens/Home";
@@ -9,6 +9,8 @@ import Game from "./screens/Game";
 import Mypage from "./screens/Mypage";
 import Survey from "./screens/Survey";
 import Social from "./screens/Social";
+import { useSetRecoilState } from "recoil";
+import { CurrentMode } from "./global/ProjectCommon";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+    const setCurrentMode = useSetRecoilState(CurrentMode);
+
+    useEffect(() => {
+        if (document.documentElement.clientWidth < 500) {
+            setCurrentMode("mobile");
+        }
+    }, []);
+
     return <RouterProvider router={router} />;
 }
 

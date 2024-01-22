@@ -1,6 +1,11 @@
 import { atom } from "recoil";
 import { ISignInResponse } from "../ProjectTypes";
 
+export const CurrentMode = atom<string>({
+    default: "web",
+    key: "CurrentMode",
+});
+
 export const CurrentCategory = atom<string>({
     default: "",
     key: "CurrentCategory",
