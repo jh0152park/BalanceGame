@@ -76,3 +76,6 @@ export const UserInformation = atom<ISignInResponse>({
         },
     ],
 });
+
+export const SCREEN_WIDTH = document.documentElement.clientWidth;
+export const SCREEN_HEIGHT = document.documentElement.clientHeight;
