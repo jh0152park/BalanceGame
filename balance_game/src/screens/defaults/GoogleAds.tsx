@@ -33,13 +33,15 @@ export default function GoogleAds() {
     }, []);
 
     return (
-        <ins
-            className="adsbygoogle"
-            style={{ display: "block" }}
-            data-ad-client="ca-pub-7748316956330968"
-            data-ad-slot="3545458418"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-        ></ins>
+        <div>
+            <ins
+                className="adsbygoogle"
+                style={{ display: "block" }}
+                data-ad-client="ca-pub-2088200838674495"
+                data-ad-slot="8561726116"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+            ></ins>
+        </div>
     );
 }
