@@ -7,6 +7,7 @@ import {
     keyframes,
 } from "@chakra-ui/react";
 import { ColorTable } from "../../Colors";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/ProjectCommon";
 
 export default function PreviewMobile() {
     const fontColors = keyframes`
@@ -30,10 +31,10 @@ export default function PreviewMobile() {
                     ⬆카테고리를 선택해서 시작해보세요⬆
                 </Heading>
             </Box>
-            <VStack w="100%" h="100%">
+            <VStack>
                 <Center
-                    w="90%"
-                    h="30%"
+                    w={`${SCREEN_WIDTH * 0.9}px`}
+                    h={`${SCREEN_HEIGHT * 0.25}px`}
                     borderRadius="20px"
                     bgColor={ColorTable.red}
                     fontWeight="bold"
@@ -42,8 +43,8 @@ export default function PreviewMobile() {
                     Are you
                 </Center>
                 <Center
-                    w="90%"
-                    h="30%"
+                    w={`${SCREEN_WIDTH * 0.9}px`}
+                    h={`${SCREEN_HEIGHT * 0.25}px`}
                     borderRadius="20px"
                     bgColor={ColorTable.blue}
                     fontWeight="bold"

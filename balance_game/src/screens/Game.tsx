@@ -6,15 +6,19 @@ import { CATEGORIES_ENG, IGame } from "../ProjectTypes";
 import { useQuery, useQueryClient } from "react-query";
 import { getEntireGame, getGame } from "../Api";
 import { useRecoilValue } from "recoil";
-import { CurrentCategory } from "../global/ProjectCommon";
+import { CurrentCategory, CurrentMode } from "../global/ProjectCommon";
 import LoadingBoard from "../components/game/LoadingBoard";
 import EmptyBoard from "../components/game/EmptyBoard";
 import SurveyBoard from "../components/game/SurveyBoard";
+import LoadingBoardMobile from "../components/game/LoadingBoardMobile";
+import EmptyBoardMobile from "../components/game/EmptyBoardMobile";
+import SurveyBoardMobile from "../components/game/SurveyBoardMobile";
 
 export default function Game() {
     const { gameCategory } = useParams();
     const queryClient = useQueryClient();
     const currentCategory = useRecoilValue(CurrentCategory);
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
 
     const category = Object.keys(CATEGORIES_ENG).find(
         (key) => CATEGORIES_ENG[key] === gameCategory
@@ -44,12 +48,22 @@ export default function Game() {
             <Helmet>
                 <title>Main</title>
             </Helmet>
-            <VStack w="100%" minH="100vh">
+            <VStack w="100%">
                 <VStack mt="95px">
                     {isLoading || gameList === undefined ? (
-                        <LoadingBoard />
+                        isMobile ? (
+                            <LoadingBoardMobile />
+                        ) : (
+                            <LoadingBoard />
+                        )
                     ) : isEmpty ? (
-                        <EmptyBoard />
+                        isMobile ? (
+                            <EmptyBoardMobile />
+                        ) : (
+                            <EmptyBoard />
+                        )
+                    ) : isMobile ? (
+                        <SurveyBoardMobile games={gameList} />
                     ) : (
                         <SurveyBoard games={gameList} />
                     )}
