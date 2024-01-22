@@ -10,14 +10,19 @@ import {
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { IsUserLoggedIn, UserInformation } from "../global/ProjectCommon";
+import {
+    CurrentMode,
+    IsUserLoggedIn,
+    UserInformation,
+} from "../global/ProjectCommon";
 import { useMutation, useQuery } from "react-query";
 import { getUserInformation, logout } from "../Api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangeNameModal from "../components/mypage/ChangeNameModal";
 import PrintGame from "../components/mypage/PrintGame";
 import PrinkComment from "../components/mypage/PrintComment";
+import { ColorTable } from "../Colors";
 
 interface IGame {
     title: string;
@@ -56,6 +61,7 @@ export default function Mypage() {
     const setUserInformation = useSetRecoilState(UserInformation);
 
     const [show, setShow] = useState("null");
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
 
     let totalPlayer = 0;
     let totalLike = 0;
@@ -101,6 +107,10 @@ export default function Mypage() {
         modal.onOpen();
     }
 
+    useEffect(() => {
+        setShow("null");
+    }, []);
+
     return (
         <>
             <Helmet>
@@ -110,12 +120,12 @@ export default function Mypage() {
                 <VStack
                     w="100%"
                     minH="100vh"
-                    px="450px"
-                    py="50px"
+                    px={isMobile ? "0px" : "450px"}
+                    py={isMobile ? "80px" : "50px"}
                     alignItems="flex-start"
                 >
                     <Box
-                        pt="30px"
+                        pt={isMobile ? "20px" : "30px"}
                         w="100%"
                         h="250px"
                         display="flex"
@@ -125,26 +135,56 @@ export default function Mypage() {
                     >
                         <VStack w="100%" h="100%">
                             <VStack>
-                                <Heading>{userInformation.nickname}</Heading>
-                                <Text>{userInformation.email}</Text>
+                                <Heading fontSize={isMobile ? "25px" : "36px"}>
+                                    {userInformation.nickname}
+                                </Heading>
+                                <Text fontSize={isMobile ? "14px" : "16px"}>
+                                    {userInformation.email}
+                                </Text>
                             </VStack>
-                            <HStack mt="30px" fontWeight="bold">
-                                <Center>
-                                    내 질문: {data?.writedComments.length} |
-                                </Center>
-                                <Center>
-                                    내 댓글: {data?.writedComments.length} |
-                                </Center>
-                                <Center>
-                                    내가 받은 좋아요: {totalLike} |{" "}
-                                </Center>
-                                <Center>
-                                    내가 받은 싫어요: {totalDislike} |
-                                </Center>
-                                <Center>
-                                    내 질문 플레이 수: {totalPlayer}
-                                </Center>
+
+                            <HStack
+                                mt="20px"
+                                fontWeight="bold"
+                                spacing={isMobile ? "7px" : "30px"}
+                                fontSize={isMobile ? "12px" : "16px"}
+                            >
+                                <VStack>
+                                    <Center color={ColorTable.orange}>
+                                        내 질문
+                                    </Center>
+                                    <Center>
+                                        {data?.writedComments.length}
+                                    </Center>
+                                </VStack>
+                                <VStack>
+                                    <Center color={ColorTable.orange}>
+                                        내 댓글
+                                    </Center>
+                                    <Center>
+                                        {data?.writedComments.length}
+                                    </Center>
+                                </VStack>
+                                <VStack>
+                                    <Center color={ColorTable.orange}>
+                                        내가 받은 좋아요
+                                    </Center>
+                                    <Center>{totalLike}</Center>
+                                </VStack>
+                                <VStack>
+                                    <Center color={ColorTable.orange}>
+                                        내가 받은 싫어요
+                                    </Center>
+                                    <Center>{totalDislike}</Center>
+                                </VStack>
+                                <VStack>
+                                    <Center color={ColorTable.orange}>
+                                        내 질문 플레이 수
+                                    </Center>
+                                    <Center>{totalPlayer}</Center>
+                                </VStack>
                             </HStack>
+
                             <HStack mt="20px" fontWeight="bold" spacing="30px">
                                 <Center
                                     py="10px"
@@ -199,9 +239,11 @@ export default function Mypage() {
                             ? data?.createdGames.map((game, index) => (
                                   <PrintGame key={index} game={game} />
                               ))
-                            : data?.writedComments.map((comment, index) => (
+                            : show === "comment"
+                            ? data?.writedComments.map((comment, index) => (
                                   <PrinkComment key={index} comment={comment} />
-                              ))}
+                              ))
+                            : null}
                     </>
                 </VStack>
             )}

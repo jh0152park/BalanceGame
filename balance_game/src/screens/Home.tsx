@@ -4,14 +4,15 @@ import StartModal from "../components/home/StartModal";
 import { Helmet } from "react-helmet";
 import RegisterModal from "../components/home/RegisterModal";
 import LoginModal from "../components/home/LoginModal";
-import { useSetRecoilState } from "recoil";
-import { CurrentCategory } from "../global/ProjectCommon";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { CurrentCategory, CurrentMode } from "../global/ProjectCommon";
 
 export default function Home() {
     const startModal = useDisclosure();
     const registerModal = useDisclosure();
     const loginModal = useDisclosure();
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
 
     setCurrentCategory("");
 
@@ -21,7 +22,7 @@ export default function Home() {
                 <title>Welcome</title>
             </Helmet>
             <Center w="100%" h="100vh">
-                <VStack>
+                <VStack mt={isMobile ? "-90px" : ""}>
                     <VStack>
                         <Heading
                             fontFamily="Rubik Burned"
