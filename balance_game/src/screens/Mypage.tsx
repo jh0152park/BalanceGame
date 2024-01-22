@@ -17,6 +17,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangeNameModal from "../components/mypage/ChangeNameModal";
 import PrintGame from "../components/mypage/PrintGame";
+import PrinkComment from "../components/mypage/PrintComment";
 
 interface IGame {
     title: string;
@@ -32,8 +33,8 @@ export interface ICreatedGame {
     totalPlayer: 11;
 }
 
-interface IWritedComment {
-    createdAd: string;
+export interface IWritedComment {
+    createdAt: string;
     description: string;
 }
 
@@ -197,7 +198,9 @@ export default function Mypage() {
                             ? data?.createdGames.map((game, index) => (
                                   <PrintGame key={index} game={game} />
                               ))
-                            : null}
+                            : data?.writedComments.map((comment, index) => (
+                                  <PrinkComment key={index} comment={comment} />
+                              ))}
                     </>
                 </VStack>
             )}
