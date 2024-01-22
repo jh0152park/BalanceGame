@@ -23,6 +23,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signUpWithEmail } from "../../Api";
 import { ISignUpResponse } from "../../ProjectTypes";
+import { onKakaoClick, onNaverClick } from "../../utils/login";
 
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {
     const {
@@ -81,10 +82,6 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
 
         mutation.mutate({ email, password, nickname });
     }
-
-    function onKakaoClick() {}
-
-    function onNaverClick() {}
 
     return (
         <Modal isOpen={isOpen} onClose={CloseModal} isCentered size="xl">
