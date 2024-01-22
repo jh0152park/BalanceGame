@@ -3,8 +3,10 @@ import {
     Center,
     HStack,
     Heading,
+    Input,
     Text,
     VStack,
+    useDisclosure,
     useToast,
 } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
@@ -14,6 +16,7 @@ import { useMutation, useQuery } from "react-query";
 import { getUserInformation, logout } from "../Api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ChangeNameModal from "../components/mypage/ChangeNameModal";
 
 interface IGame {
     title: string;
@@ -88,7 +91,11 @@ export default function Mypage() {
         logoutMutation.mutate();
     }
 
-    function onNameChangeClick() {}
+    const modal = useDisclosure();
+
+    function onNameChangeClick() {
+        modal.onOpen();
+    }
 
     return (
         <>
@@ -152,11 +159,16 @@ export default function Mypage() {
                                     borderRadius="5px"
                                     border="1px solid whitesmoke"
                                     _hover={{ cursor: "pointer" }}
+                                    onClick={onNameChangeClick}
                                 >
                                     이름변경
                                 </Center>
                             </HStack>
                         </VStack>
+                        <ChangeNameModal
+                            isOpen={modal.isOpen}
+                            onClose={modal.onClose}
+                        />
                     </Box>
                 </Box>
             )}
