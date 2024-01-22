@@ -13,7 +13,12 @@ export default function Layout() {
     const isMobile = currentMode === "mobile";
 
     return (
-        <Box w="100%" minH="125vh" p="30px" position={"relative"}>
+        <Box
+            w="100%"
+            minH={isMobile ? "100포" : "125vh"}
+            p={isMobile ? "15px" : "30px"}
+            position={"relative"}
+        >
             {!is_home ? isMobile ? <HeaderMobile /> : <Header /> : null}
             <Outlet />
             {!isMobile && (
