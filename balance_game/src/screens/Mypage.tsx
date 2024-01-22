@@ -3,7 +3,6 @@ import {
     Center,
     HStack,
     Heading,
-    Input,
     Text,
     VStack,
     useDisclosure,
@@ -17,13 +16,14 @@ import { getUserInformation, logout } from "../Api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangeNameModal from "../components/mypage/ChangeNameModal";
+import PrintGame from "../components/mypage/PrintGame";
 
 interface IGame {
     title: string;
     description: string;
 }
 
-interface ICreatedGame {
+export interface ICreatedGame {
     createdAt: string;
     dislike: number;
     game: IGame[];
@@ -53,6 +53,8 @@ export default function Mypage() {
 
     const setIsUserLoggedIn = useSetRecoilState(IsUserLoggedIn);
     const setUserInformation = useSetRecoilState(UserInformation);
+
+    const [show, setShow] = useState("null");
 
     let totalPlayer = 0;
     let totalLike = 0;
@@ -103,13 +105,12 @@ export default function Mypage() {
                 <title>My page</title>
             </Helmet>
             {isLoading ? null : (
-                <Box
+                <VStack
                     w="100%"
                     minH="100vh"
-                    display="flex"
-                    justifyContent="flex-start"
                     px="450px"
                     py="50px"
+                    alignItems="flex-start"
                 >
                     <Box
                         pt="30px"
@@ -170,7 +171,35 @@ export default function Mypage() {
                             onClose={modal.onClose}
                         />
                     </Box>
-                </Box>
+
+                    <HStack fontWeight="bold" my="20px" spacing="20px">
+                        <Text
+                            onClick={() => {
+                                setShow("survey");
+                            }}
+                            color={show === "survey" ? "tomato" : "whitesmoke"}
+                            _hover={{ cursor: "pointer" }}
+                        >
+                            내 질문보기
+                        </Text>
+                        <Text
+                            onClick={() => {
+                                setShow("comment");
+                            }}
+                            color={show === "comment" ? "tomato" : "whitesmoke"}
+                            _hover={{ cursor: "pointer" }}
+                        >
+                            내 댓글보기
+                        </Text>
+                    </HStack>
+                    <>
+                        {show === "survey"
+                            ? data?.createdGames.map((game, index) => (
+                                  <PrintGame key={index} game={game} />
+                              ))
+                            : null}
+                    </>
+                </VStack>
             )}
         </>
     );
