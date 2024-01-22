@@ -2,13 +2,18 @@ import { Text, useToast } from "@chakra-ui/react";
 import { ColorTable } from "../../../Colors";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, IsUserLoggedIn } from "../../../global/ProjectCommon";
+import {
+    CurrentCategory,
+    CurrentMode,
+    IsUserLoggedIn,
+} from "../../../global/ProjectCommon";
 
 export default function MypageButton() {
     const toast = useToast();
     const navigate = useNavigate();
     const setCurrentCategory = useSetRecoilState(CurrentCategory);
     const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
 
     function onButtonClick() {
         if (!isUserLoggedIn) {
@@ -26,7 +31,7 @@ export default function MypageButton() {
     return (
         <Text
             fontWeight="bold"
-            fontSize="18px"
+            fontSize={isMobile ? "15px" : "18px"}
             color={ColorTable.orange}
             _hover={{ cursor: "pointer", color: ColorTable.darkOrange }}
             transition="all 0.1s linear"
