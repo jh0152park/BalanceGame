@@ -162,3 +162,25 @@ export async function getUserInformation({ queryKey }: QueryFunctionContext) {
     });
     return response.data;
 }
+
+export async function changeNickname({
+    nickname,
+    accessToken,
+}: {
+    nickname: string;
+    accessToken: string;
+}) {
+    const response = await axciosInstance.post(
+        `/auth/nickname`,
+        {
+            nickname,
+        },
+        {
+            headers: {
+                "X-CSRFToken": Cookie.get("csrftoken") || "",
+                Authorization: `Bearer ${accessToken}`,
+            },
+        }
+    );
+    return response.data;
+}
