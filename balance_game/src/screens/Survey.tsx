@@ -16,7 +16,7 @@ import { useMutation } from "react-query";
 import { createGame } from "../Api";
 import { useRecoilValue } from "recoil";
 import { UserInformation } from "../global/ProjectCommon";
-import { go_to_top } from "../utils/util";
+import { go_to_top } from "../utils/Util";
 
 export default function Survey() {
     const toast = useToast();

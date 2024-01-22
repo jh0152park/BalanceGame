@@ -7,6 +7,7 @@ import {
     FormControl,
     FormLabel,
     HStack,
+    Image,
     Input,
     Modal,
     ModalBody,
@@ -23,7 +24,8 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signUpWithEmail } from "../../Api";
 import { ISignUpResponse } from "../../ProjectTypes";
-import { onKakaoClick, onNaverClick } from "../../utils/login";
+import { onKakaoClick, onNaverClick } from "../../utils/logins/SocialLogin";
+import SocialButton from "../../utils/logins/SocialButton";
 
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {
     const {
@@ -33,6 +35,9 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
         formState: { errors },
     } = useForm();
     const toast = useToast();
+
+    const kakaoLogo = require("../../resource/카카오_로고.png");
+    const naverLogo = require("../../resource/네이버_로고.png");
 
     const mutation = useMutation(signUpWithEmail, {
         onMutate: () => {
@@ -89,7 +94,7 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
             <ModalContent bgColor="black">
                 <ModalHeader>회원가입</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody p="20px">
+                <ModalBody p="35px">
                     <VStack as="form" onSubmit={handleSubmit(onSubmit)}>
                         <VStack spacing="20px" w="100%">
                             <Input
@@ -140,50 +145,47 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                 })}
                                 isInvalid={Boolean(errors.nickname?.message)}
                             />
-                            {/* <Text color="red.300" fontWeight="bold">
-                                {errors.email?.message as ""}
-                                {errors.password?.message as ""}
-                                {errors.nickname?.message as ""}
-                            </Text> */}
                         </VStack>
-                        <VStack w="100%" justifyContent="center" mt="20px">
+                        <HStack w="100%" justifyContent="center" mt="20px">
                             <Button
                                 w="100%"
-                                colorScheme="purple"
+                                h="40px"
+                                bgColor="purple.300"
+                                type="submit"
+                            >
+                                생성하기
+                            </Button>
+                            <Button
+                                w="100%"
+                                h="40px"
+                                bgColor="purple.300"
                                 onClick={CloseModal}
                             >
                                 취소하기
                             </Button>
-                            <Button w="100%" colorScheme="cyan" type="submit">
-                                생성하기
-                            </Button>
+                        </HStack>
+                        <VStack w="100%">
+                            <SocialButton
+                                width={400}
+                                height={40}
+                                logoWidth={20}
+                                logoHeight={20}
+                                logoColor="#000000"
+                                bgColor="#FEE500"
+                                logoUrl={kakaoLogo}
+                                social="카카오"
+                            />
+                            <SocialButton
+                                width={400}
+                                height={40}
+                                logoWidth={20}
+                                logoHeight={20}
+                                logoColor="#FFFFFF"
+                                bgColor="#03C75A"
+                                logoUrl={naverLogo}
+                                social="네이버"
+                            />
                         </VStack>
-                    </VStack>
-                    <Box position="relative" w="100%" my="30px" mx="auto">
-                        <Divider />
-                        <AbsoluteCenter px="4" pb="4px">
-                            or
-                        </AbsoluteCenter>
-                    </Box>
-                    <VStack justifyContent="center">
-                        <Button
-                            w="100%"
-                            bgColor="#FEE20A"
-                            color="black"
-                            fontWeight="bold"
-                            onClick={onKakaoClick}
-                        >
-                            카카오 회원가입
-                        </Button>
-                        <Button
-                            w="100%"
-                            bgColor="#19C048"
-                            color="black"
-                            fontWeight="bold"
-                            onClick={onNaverClick}
-                        >
-                            네이버 회원가입
-                        </Button>
                     </VStack>
                 </ModalBody>
             </ModalContent>
