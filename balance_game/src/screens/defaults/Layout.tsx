@@ -24,7 +24,7 @@ export default function Layout() {
                 w={"200px"}
                 position={"absolute"}
                 left={0}
-                bottom={0}
+                top={"600px"}
                 bgColor="green"
             >
                 <GoogleAds />
@@ -42,7 +42,7 @@ export default function Layout() {
                 w={"200px"}
                 position={"absolute"}
                 right={0}
-                bottom={0}
+                top={"600px"}
                 bgColor="green"
             >
                 <GoogleAds />
