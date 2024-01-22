@@ -86,6 +86,7 @@ export default function Mypage() {
                 nickname: "",
                 accessToken: "",
             });
+            setShow("");
             navigage("/");
         },
     });
