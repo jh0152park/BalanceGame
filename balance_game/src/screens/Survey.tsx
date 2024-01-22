@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { createGame } from "../Api";
 import { useRecoilValue } from "recoil";
-import { UserInformation } from "../global/ProjectCommon";
+import { CurrentMode, UserInformation } from "../global/ProjectCommon";
 import { go_to_top } from "../utils/Util";
 
 export default function Survey() {
@@ -24,6 +24,8 @@ export default function Survey() {
     const [category, setCategory] = useState("");
     const { register, reset, handleSubmit } = useForm();
     const userInformation = useRecoilValue(UserInformation);
+    const isMobile = useRecoilValue(CurrentMode) === "mobile";
+    const width = isMobile ? "100%" : "50%";
 
     const mutation = useMutation(createGame, {
         onMutate: () => {
@@ -85,7 +87,7 @@ export default function Survey() {
                 as="form"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">카테고리</Heading>
                     <Select
                         placeholder="선택해주세요"
@@ -99,7 +101,7 @@ export default function Survey() {
                     </Select>
                 </Box>
 
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">질문지 제목</Heading>
                     <Input
                         color="white"
@@ -113,7 +115,7 @@ export default function Survey() {
                     />
                 </Box>
 
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">선택지1</Heading>
                     <Input
                         color="white"
@@ -127,7 +129,7 @@ export default function Survey() {
                     />
                 </Box>
 
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">선택지1 설명</Heading>
                     <Input
                         color="white"
@@ -141,7 +143,7 @@ export default function Survey() {
                     />
                 </Box>
 
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">선택지2</Heading>
                     <Input
                         color="white"
@@ -155,7 +157,7 @@ export default function Survey() {
                     />
                 </Box>
 
-                <Box w="50%">
+                <Box w={width}>
                     <Heading mb="20px">선택지2 설명</Heading>
                     <Input
                         color="white"
