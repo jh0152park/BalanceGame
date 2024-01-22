@@ -19,6 +19,7 @@ import Comment from "./Comment";
 import { useMutation } from "react-query";
 import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
 import { go_to_top } from "../../utils/Util";
+import GoogleAds from "../../screens/defaults/GoogleAds";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
