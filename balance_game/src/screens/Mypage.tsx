@@ -51,6 +51,7 @@ interface IMyInformation {
 export default function Mypage() {
     const toast = useToast();
     const navigage = useNavigate();
+    const isUserLoggedIn = useRecoilValue(IsUserLoggedIn);
     const userInformation = useRecoilValue(UserInformation);
     const { data, isLoading } = useQuery<IMyInformation>(
         ["mypage", userInformation.accessToken],
@@ -116,7 +117,7 @@ export default function Mypage() {
             <Helmet>
                 <title>밸런스 VS 게임</title>
             </Helmet>
-            {isLoading ? null : (
+            {isLoading ? null : isUserLoggedIn ? (
                 <VStack
                     w="100%"
                     minH="100vh"
@@ -246,7 +247,7 @@ export default function Mypage() {
                             : null}
                     </>
                 </VStack>
-            )}
+            ) : null}
         </>
     );
 }
