@@ -1,5 +1,4 @@
-import { Center, HStack, Heading, VStack } from "@chakra-ui/react";
-import Board from "./Board";
+import { Center, Heading, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../colors";
 import BoardMobile from "./BoardMobile";
 

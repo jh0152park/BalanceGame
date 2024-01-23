@@ -15,7 +15,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { changeNickname } from "../../Api";
 import { UserInformation } from "../../global/projectCommon";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 export default function ChangeNameModal({ isOpen, onClose }: IModalProps) {

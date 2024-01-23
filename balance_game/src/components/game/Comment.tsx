@@ -1,7 +1,6 @@
 import {
     Box,
     Button,
-    Center,
     HStack,
     Input,
     Text,
@@ -52,19 +51,6 @@ export default function Comment({
             });
         },
     });
-
-    const dump_comment = [
-        {
-            writer: "김유현",
-            description: "레전드 바지 팝니다",
-            createdAt: "2024-01-17T00:35:10.687Z",
-        },
-        {
-            writer: "김병섭",
-            description: "ㅋㅋㅋ레전드레전드레전드",
-            createdAt: "2024-01-17T00:35:10.687Z",
-        },
-    ];
 
     function onSubmit(data: FieldValues) {
         const description = data.comment;

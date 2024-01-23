@@ -13,13 +13,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { CurrentCategory } from "../../global/projectCommon";
-import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
 import Comment from "./Comment";
 import { useMutation } from "react-query";
 import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
-
-import GoogleAds from "../../screens/defaults/GoogleAds";
 import { go_to_top } from "../../utils/util";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
@@ -113,20 +110,6 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         seleceMutation.mutate({ gamesId, gameId });
     }
 
-    function sequenceGenerator() {
-        let indexs: number[] = [];
-        let i = 0;
-
-        while (i < games.length) {
-            let index = Math.floor(Math.random() * games.length);
-            if (!indexs.includes(index)) {
-                indexs.push(index);
-                i++;
-            }
-        }
-        setSequence(indexs);
-    }
-
     // relate like
     function toggleLike() {
         setLikeClick((prev) => !prev);
@@ -150,6 +133,20 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         }
         const gamesId = games[sequence[sequenceIndex]].gamesId;
         disLikeMutation.mutate({ gamesId });
+    }
+
+    function sequenceGenerator() {
+        let indexs: number[] = [];
+        let i = 0;
+
+        while (i < games.length) {
+            let index = Math.floor(Math.random() * games.length);
+            if (!indexs.includes(index)) {
+                indexs.push(index);
+                i++;
+            }
+        }
+        setSequence(indexs);
     }
 
     useEffect(() => {

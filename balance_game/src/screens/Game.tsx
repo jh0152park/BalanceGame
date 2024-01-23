@@ -1,4 +1,4 @@
-import { Center, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
