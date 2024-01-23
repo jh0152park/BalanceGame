@@ -46,7 +46,7 @@ export default function Game() {
     return (
         <>
             <Helmet>
-                <title>Main</title>
+                <title>밸런스 VS 게임</title>
             </Helmet>
             <VStack w="100%">
                 <VStack mt="95px">
