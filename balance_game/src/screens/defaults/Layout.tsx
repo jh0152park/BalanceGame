@@ -65,7 +65,7 @@ export default function Layout() {
                 </>
             ) : (
                 <>
-                    {/* <Box
+                    <Box
                         w={`${SCREEN_WIDTH * 1}px`}
                         h={`${SCREEN_HEIGHT * 0.1}px`}
                         position="absolute"
@@ -75,7 +75,7 @@ export default function Layout() {
                         mx={"auto"}
                     >
                         <GoogleAds />
-                    </Box> */}
+                    </Box>
                 </>
             )}
         </Box>
