@@ -20,6 +20,7 @@ import { ISignInResponse } from "../../ProjectTypes";
 import { useSetRecoilState } from "recoil";
 import { IsUserLoggedIn, UserInformation } from "../../global/ProjectCommon";
 import SocialButton from "../../utils/logins/SocialButton";
+import { go_to_top } from "../../utils/Util";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();
@@ -55,6 +56,7 @@ export default function LoginModal({ isOpen, onClose }: IModalProps) {
 
             CloseModal();
             navigate("/main");
+            go_to_top(0);
         },
         onError: (result: any) => {
             console.log("Sign in with email mutation fail");
