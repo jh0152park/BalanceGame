@@ -26,13 +26,7 @@ export default function Layout() {
             <Outlet />
             {!isMobile ? (
                 <>
-                    <Box
-                        w={"200px"}
-                        position={"absolute"}
-                        left={0}
-                        top={0}
-                        bgColor="blue"
-                    >
+                    <Box w={"200px"} position={"absolute"} left={0} top={0}>
                         <GoogleAds />
                     </Box>
                     <Box
@@ -40,17 +34,10 @@ export default function Layout() {
                         position={"absolute"}
                         left={0}
                         top={"600px"}
-                        bgColor="green"
                     >
                         <GoogleAds />
                     </Box>
-                    <Box
-                        w={"200px"}
-                        position={"absolute"}
-                        right={0}
-                        top={0}
-                        bgColor="blue"
-                    >
+                    <Box w={"200px"} position={"absolute"} right={0} top={0}>
                         <GoogleAds />
                     </Box>
                     <Box
@@ -58,7 +45,6 @@ export default function Layout() {
                         position={"absolute"}
                         right={0}
                         top={"600px"}
-                        bgColor="green"
                     >
                         <GoogleAds />
                     </Box>
