@@ -9,12 +9,12 @@ import {
     useToast,
 } from "@chakra-ui/react";
 import { FieldValues, useForm } from "react-hook-form";
-import { IComment, IGame } from "../../ProjectTypes";
+import { IComment, IGame } from "../../projectTypes";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { createComment } from "../../Api";
 import { useRecoilValue } from "recoil";
-import { UserInformation } from "../../global/ProjectCommon";
+import { UserInformation } from "../../global/projectCommon";
 
 export default function Comment({
     gamesId,

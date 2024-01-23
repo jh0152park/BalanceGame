@@ -6,8 +6,8 @@ import {
     VStack,
     keyframes,
 } from "@chakra-ui/react";
-import { ColorTable } from "../../Colors";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/ProjectCommon";
+import { ColorTable } from "../../colors";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/projectCommon";
 
 export default function PreviewMobile() {
     const fontColors = keyframes`

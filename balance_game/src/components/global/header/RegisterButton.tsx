@@ -1,8 +1,8 @@
 import { Text } from "@chakra-ui/react";
-import { ColorTable } from "../../../Colors";
+import { ColorTable } from "../../../colors";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, CurrentMode } from "../../../global/ProjectCommon";
+import { CurrentCategory, CurrentMode } from "../../../global/projectCommon";
 
 export default function RegisterButton() {
     const navigate = useNavigate();

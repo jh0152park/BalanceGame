@@ -10,7 +10,7 @@ import Mypage from "./screens/Mypage";
 import Survey from "./screens/Survey";
 import Social from "./screens/Social";
 import { useSetRecoilState } from "recoil";
-import { CurrentMode } from "./global/ProjectCommon";
+import { CurrentMode } from "./global/projectCommon";
 
 const router = createBrowserRouter(
     [

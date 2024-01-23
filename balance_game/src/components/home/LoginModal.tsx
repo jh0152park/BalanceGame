@@ -16,11 +16,11 @@ import {
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signInWithEmail } from "../../Api";
-import { ISignInResponse } from "../../ProjectTypes";
+import { ISignInResponse } from "../../projectTypes";
 import { useSetRecoilState } from "recoil";
-import { IsUserLoggedIn, UserInformation } from "../../global/ProjectCommon";
+import { IsUserLoggedIn, UserInformation } from "../../global/projectCommon";
 import SocialButton from "../../utils/logins/SocialButton";
-import { go_to_top } from "../../utils/Util";
+import { go_to_top } from "../../utils/util";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();

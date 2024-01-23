@@ -8,15 +8,15 @@ import {
     VStack,
     useToast,
 } from "@chakra-ui/react";
-import { CATEGORIES } from "../ProjectTypes";
+import { CATEGORIES } from "../projectTypes";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import { createGame } from "../Api";
 import { useRecoilValue } from "recoil";
-import { CurrentMode, UserInformation } from "../global/ProjectCommon";
-import { go_to_top } from "../utils/Util";
+import { CurrentMode, UserInformation } from "../global/projectCommon";
+import { go_to_top } from "../utils/util";
 
 export default function Survey() {
     const toast = useToast();

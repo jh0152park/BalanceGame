@@ -14,7 +14,7 @@ import {
     CurrentMode,
     IsUserLoggedIn,
     UserInformation,
-} from "../global/ProjectCommon";
+} from "../global/projectCommon";
 import { useMutation, useQuery } from "react-query";
 import { getUserInformation, logout } from "../Api";
 import { useEffect, useState } from "react";
@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import ChangeNameModal from "../components/mypage/ChangeNameModal";
 import PrintGame from "../components/mypage/PrintGame";
 import PrinkComment from "../components/mypage/PrintComment";
-import { ColorTable } from "../Colors";
+import { ColorTable } from "../colors";
 
 interface IGame {
     title: string;

@@ -14,7 +14,7 @@ import { IModalProps } from "../home/StartModal";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { changeNickname } from "../../Api";
-import { UserInformation } from "../../global/ProjectCommon";
+import { UserInformation } from "../../global/projectCommon";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 

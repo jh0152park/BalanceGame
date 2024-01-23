@@ -1,11 +1,11 @@
 import { Center, Heading, VStack, useDisclosure } from "@chakra-ui/react";
-import { ColorTable } from "../Colors";
+import { ColorTable } from "../colors";
 import StartModal from "../components/home/StartModal";
 import { Helmet } from "react-helmet";
 import RegisterModal from "../components/home/RegisterModal";
 import LoginModal from "../components/home/LoginModal";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, CurrentMode } from "../global/ProjectCommon";
+import { CurrentCategory, CurrentMode } from "../global/projectCommon";
 
 export default function Home() {
     const startModal = useDisclosure();

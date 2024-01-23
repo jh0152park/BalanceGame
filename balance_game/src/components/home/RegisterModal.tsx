@@ -23,8 +23,8 @@ import { IModalProps } from "./StartModal";
 import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signUpWithEmail } from "../../Api";
-import { ISignUpResponse } from "../../ProjectTypes";
-import { onKakaoClick, onNaverClick } from "../../utils/logins/SocialLogin";
+import { ISignUpResponse } from "../../projectTypes";
+import { onKakaoClick, onNaverClick } from "../../utils/logins/socialLogin";
 import SocialButton from "../../utils/logins/SocialButton";
 
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {

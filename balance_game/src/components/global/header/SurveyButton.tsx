@@ -5,7 +5,7 @@ import {
     CurrentCategory,
     CurrentMode,
     IsUserLoggedIn,
-} from "../../../global/ProjectCommon";
+} from "../../../global/projectCommon";
 
 export default function SurveyButton() {
     const toast = useToast();

@@ -7,12 +7,12 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react";
-import { IGame } from "../../ProjectTypes";
-import { ColorTable } from "../../Colors";
+import { IGame } from "../../projectTypes";
+import { ColorTable } from "../../colors";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { CurrentCategory } from "../../global/ProjectCommon";
+import { CurrentCategory } from "../../global/projectCommon";
 import { SlLike, SlDislike } from "react-icons/sl";
 import { FcLike, FcDislike } from "react-icons/fc";
 import Comment from "./Comment";
@@ -20,7 +20,7 @@ import { useMutation } from "react-query";
 import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
 
 import GoogleAds from "../../screens/defaults/GoogleAds";
-import { go_to_top } from "../../utils/Util";
+import { go_to_top } from "../../utils/util";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();

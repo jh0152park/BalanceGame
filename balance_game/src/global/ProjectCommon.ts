@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { ISignInResponse } from "../ProjectTypes";
+import { ISignInResponse } from "../projectTypes";
 
 export const CurrentMode = atom<string>({
     default: "web",

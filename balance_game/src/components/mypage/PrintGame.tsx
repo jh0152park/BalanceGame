@@ -1,7 +1,7 @@
 import { HStack, Text, VStack } from "@chakra-ui/react";
 import { ICreatedGame } from "../../screens/Mypage";
 import { useRecoilValue } from "recoil";
-import { CurrentMode } from "../../global/ProjectCommon";
+import { CurrentMode } from "../../global/projectCommon";
 
 export default function PrintGame({ game }: { game: ICreatedGame }) {
     const isMobile = useRecoilValue(CurrentMode) === "mobile";
