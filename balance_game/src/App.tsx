@@ -55,7 +55,7 @@ const router = createBrowserRouter(
             ],
         },
     ],
-    { basename: "/balancegame-front.pages.dev" }
+    { basename: "https://balancegame-front.pages.dev" }
 );
 
 function App() {
