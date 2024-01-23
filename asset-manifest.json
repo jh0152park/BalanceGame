@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/BalanceGame_Front/static/js/main.dc28d2a8.js",
+    "main.js": "/BalanceGame_Front/static/js/main.5d5ca15c.js",
     "index.html": "/BalanceGame_Front/index.html",
-    "main.dc28d2a8.js.map": "/BalanceGame_Front/static/js/main.dc28d2a8.js.map"
+    "main.5d5ca15c.js.map": "/BalanceGame_Front/static/js/main.5d5ca15c.js.map"
   },
   "entrypoints": [
-    "static/js/main.dc28d2a8.js"
+    "static/js/main.5d5ca15c.js"
   ]
 }
