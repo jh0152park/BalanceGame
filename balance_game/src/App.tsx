@@ -13,50 +13,46 @@ import Social from "./screens/Social";
 import { useSetRecoilState } from "recoil";
 import { CurrentMode } from "./global/projectCommon";
 
-const router = createBrowserRouter(
-    [
-        {
-            path: "/",
-            errorElement: <Notfound />,
-            element: <Layout />,
-            children: [
-                {
-                    path: "",
-                    element: <Home />,
-                },
-                {
-                    path: "main",
-                    element: <Main />,
-                },
-                {
-                    path: "mypage",
-                    element: <Mypage />,
-                },
-                {
-                    path: "survey",
-                    element: <Survey />,
-                },
-                {
-                    path: "game/:gameCategory",
-                    element: <Game />,
-                },
-            ],
-        },
-        // social 로그인 시 리다이렉션 할 url
-        {
-            path: "/auth",
-            errorElement: <Notfound />,
-            element: <Layout />,
-            children: [
-                {
-                    path: "social/:uid/:email/:nickname/:accessToken",
-                    element: <Social />,
-                },
-            ],
-        },
-    ],
-    { basename: "https://balancegame-front.pages.dev" }
-);
+const router = createBrowserRouter([
+    {
+        path: "/",
+        errorElement: <Notfound />,
+        element: <Layout />,
+        children: [
+            {
+                path: "",
+                element: <Home />,
+            },
+            {
+                path: "main",
+                element: <Main />,
+            },
+            {
+                path: "mypage",
+                element: <Mypage />,
+            },
+            {
+                path: "survey",
+                element: <Survey />,
+            },
+            {
+                path: "game/:gameCategory",
+                element: <Game />,
+            },
+        ],
+    },
+    {
+        path: "/auth",
+        errorElement: <Notfound />,
+        element: <Layout />,
+        children: [
+            {
+                path: "social/:uid/:email/:nickname/:accessToken",
+                element: <Social />,
+            },
+        ],
+    },
+]);
 
 function App() {
     const setCurrentMode = useSetRecoilState(CurrentMode);
