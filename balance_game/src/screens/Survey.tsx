@@ -17,6 +17,8 @@ import { createGame } from "../Api";
 import { useRecoilValue } from "recoil";
 import { CurrentMode, UserInformation } from "../global/projectCommon";
 import { go_to_top } from "../utils/util";
+import { Helmet } from "react-helmet";
+import { inherits } from "util";
 
 export default function Survey() {
     const toast = useToast();
@@ -79,102 +81,116 @@ export default function Survey() {
     }
 
     return (
-        <Center w="100%" minH="100vh" pt="150px">
-            <VStack
-                w="100%"
-                h="100%"
-                spacing="50px"
-                as="form"
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                <Box w={width}>
-                    <Heading mb="20px">카테고리</Heading>
-                    <Select
-                        placeholder="선택해주세요"
-                        onChange={(e) => setCategory(e.target.value)}
+        <>
+            <Helmet>
+                <title>밸런스 VS 게임</title>
+            </Helmet>
+            <Center w="100%" minH="100vh" pt="150px">
+                <VStack
+                    w="100%"
+                    h="100%"
+                    spacing="50px"
+                    as="form"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
+                    <Box w={width}>
+                        <Heading mb="20px">카테고리</Heading>
+                        <Select
+                            placeholder="선택해주세요"
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            {CATEGORIES.map((category, index) => (
+                                <option key={index} value={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </Select>
+                    </Box>
+
+                    <Box w={width}>
+                        <Heading mb="20px">질문지 제목</Heading>
+                        <Input
+                            color="white"
+                            fontSize="15px"
+                            placeholder="예시) 탕수육은 부먹 vs 찍먹"
+                            _placeholder={{
+                                color: "whitesmoke",
+                                fontsize: "15px",
+                            }}
+                            {...register("title", { required: true })}
+                        />
+                    </Box>
+
+                    <Box w={width}>
+                        <Heading mb="20px">선택지1</Heading>
+                        <Input
+                            color="white"
+                            fontSize="15px"
+                            placeholder="예시) 부먹"
+                            _placeholder={{
+                                color: "whitesmoke",
+                                fontsize: "15px",
+                            }}
+                            {...register("game_title1", { required: true })}
+                        />
+                    </Box>
+
+                    <Box w={width}>
+                        <Heading mb="20px">선택지1 설명</Heading>
+                        <Input
+                            color="white"
+                            fontSize="15px"
+                            placeholder="예시) 부어먹어야 부드러움"
+                            _placeholder={{
+                                color: "whitesmoke",
+                                fontsize: "15px",
+                            }}
+                            {...register("game_description1", {
+                                required: true,
+                            })}
+                        />
+                    </Box>
+
+                    <Box w={width}>
+                        <Heading mb="20px">선택지2</Heading>
+                        <Input
+                            color="white"
+                            fontSize="15px"
+                            placeholder="예시) 찍먹"
+                            _placeholder={{
+                                color: "whitesmoke",
+                                fontsize: "15px",
+                            }}
+                            {...register("game_title2", { required: true })}
+                        />
+                    </Box>
+
+                    <Box w={width}>
+                        <Heading mb="20px">선택지2 설명</Heading>
+                        <Input
+                            color="white"
+                            fontSize="15px"
+                            placeholder="예시) 찍먹해야 바삭함"
+                            _placeholder={{
+                                color: "whitesmoke",
+                                fontsize: "15px",
+                            }}
+                            {...register("game_description2", {
+                                required: true,
+                            })}
+                        />
+                    </Box>
+
+                    <Button
+                        mb="50px"
+                        px="30px"
+                        colorScheme="twitter"
+                        type="submit"
                     >
-                        {CATEGORIES.map((category, index) => (
-                            <option key={index} value={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </Select>
-                </Box>
-
-                <Box w={width}>
-                    <Heading mb="20px">질문지 제목</Heading>
-                    <Input
-                        color="white"
-                        fontSize="15px"
-                        placeholder="예시) 탕수육은 부먹 vs 찍먹"
-                        _placeholder={{
-                            color: "whitesmoke",
-                            fontsize: "15px",
-                        }}
-                        {...register("title", { required: true })}
-                    />
-                </Box>
-
-                <Box w={width}>
-                    <Heading mb="20px">선택지1</Heading>
-                    <Input
-                        color="white"
-                        fontSize="15px"
-                        placeholder="예시) 부먹"
-                        _placeholder={{
-                            color: "whitesmoke",
-                            fontsize: "15px",
-                        }}
-                        {...register("game_title1", { required: true })}
-                    />
-                </Box>
-
-                <Box w={width}>
-                    <Heading mb="20px">선택지1 설명</Heading>
-                    <Input
-                        color="white"
-                        fontSize="15px"
-                        placeholder="예시) 부어먹어야 부드러움"
-                        _placeholder={{
-                            color: "whitesmoke",
-                            fontsize: "15px",
-                        }}
-                        {...register("game_description1", { required: true })}
-                    />
-                </Box>
-
-                <Box w={width}>
-                    <Heading mb="20px">선택지2</Heading>
-                    <Input
-                        color="white"
-                        fontSize="15px"
-                        placeholder="예시) 찍먹"
-                        _placeholder={{
-                            color: "whitesmoke",
-                            fontsize: "15px",
-                        }}
-                        {...register("game_title2", { required: true })}
-                    />
-                </Box>
-
-                <Box w={width}>
-                    <Heading mb="20px">선택지2 설명</Heading>
-                    <Input
-                        color="white"
-                        fontSize="15px"
-                        placeholder="예시) 찍먹해야 바삭함"
-                        _placeholder={{
-                            color: "whitesmoke",
-                            fontsize: "15px",
-                        }}
-                        {...register("game_description2", { required: true })}
-                    />
-                </Box>
-
-                <Button mb="50px" px="30px" colorScheme="twitter" type="submit">
-                    제출하기
-                </Button>
-            </VStack>
-        </Center>
+                        제출하기
+                    </Button>
+                </VStack>
+            </Center>
+        </>
     );
 }
