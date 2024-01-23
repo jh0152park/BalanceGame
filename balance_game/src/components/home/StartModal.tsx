@@ -10,6 +10,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { go_to_top } from "../../utils/Util";
 
 export interface IModalProps {
     isOpen: boolean;
@@ -21,6 +22,7 @@ export default function StartModal({ isOpen, onClose }: IModalProps) {
 
     function onStartClick() {
         navigate("/main");
+        go_to_top(0);
     }
 
     return (

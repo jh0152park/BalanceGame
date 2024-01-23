@@ -197,6 +197,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             <Center
                                 w="500px"
                                 h="400px"
+                                p="5px"
                                 borderRadius="20px"
                                 bgColor={ColorTable.red}
                                 fontWeight="bold"
@@ -222,6 +223,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             <Center
                                 w="500px"
                                 h="150px"
+                                p="5px"
                                 borderRadius="20px"
                                 bgColor="whiteAlpha.800"
                                 color="black"
@@ -256,6 +258,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             <Center
                                 w="500px"
                                 h="400px"
+                                p="5px"
                                 borderRadius="20px"
                                 bgColor={ColorTable.blue}
                                 fontWeight="bold"
@@ -281,6 +284,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                             <Center
                                 w="500px"
                                 h="150px"
+                                p="5px"
                                 borderRadius="20px"
                                 bgColor="whiteAlpha.800"
                                 color="black"

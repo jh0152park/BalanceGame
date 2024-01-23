@@ -201,6 +201,7 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
 
                         <VStack>
                             <Center
+                                p="5px"
                                 w={`${SCREEN_WIDTH * 0.9}px`}
                                 h={`${SCREEN_HEIGHT * 0.25}px`}
                                 borderRadius="20px"
@@ -262,6 +263,7 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
                             </Center>
 
                             <Center
+                                p="5px"
                                 w={`${SCREEN_WIDTH * 0.9}px`}
                                 h={`${SCREEN_HEIGHT * 0.25}px`}
                                 borderRadius="20px"
