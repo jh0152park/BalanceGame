@@ -10,7 +10,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { go_to_top } from "../../Util";
+import { go_to_top } from "../../utils/Util";
 
 export interface IModalProps {
     isOpen: boolean;

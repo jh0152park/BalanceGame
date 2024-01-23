@@ -20,7 +20,7 @@ import { useMutation } from "react-query";
 import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
 
 import GoogleAds from "../../screens/defaults/GoogleAds";
-import { go_to_top } from "../../Util";
+import { go_to_top } from "../../utils/Util";
 
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
