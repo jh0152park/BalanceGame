@@ -11,7 +11,7 @@ export default function Main() {
     return (
         <>
             <Helmet>
-                <title>Main</title>
+                <title>밸런스 VS 게임</title>
             </Helmet>
             <VStack w="100%" h="100vh">
                 {isMobile ? <PreviewMobile /> : <Preview />}

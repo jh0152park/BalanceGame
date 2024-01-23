@@ -114,7 +114,7 @@ export default function Mypage() {
     return (
         <>
             <Helmet>
-                <title>My page</title>
+                <title>밸런스 VS 게임</title>
             </Helmet>
             {isLoading ? null : (
                 <VStack

@@ -19,7 +19,7 @@ export default function Home() {
     return (
         <>
             <Helmet>
-                <title>Welcome</title>
+                <title>밸런스 VS 게임</title>
             </Helmet>
             <Center w="100%" h="100vh">
                 <VStack mt={isMobile ? "-90px" : ""}>
