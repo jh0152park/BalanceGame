@@ -35,7 +35,7 @@ root.render(
         <QueryClientProvider client={queryClient}>
             <RecoilRoot>
                 <GlobalStyle />
-                <ChakraProvider>
+                <ChakraProvider theme={theme}>
                     <ColorModeScript
                         initialColorMode={theme.config.initialColorMode}
                     />
