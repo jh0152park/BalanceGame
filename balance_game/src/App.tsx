@@ -1,5 +1,6 @@
+/* eslint-disable */
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Center, Heading } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import Notfound from "./screens/defaults/Notfound";
 import Layout from "./screens/defaults/Layout";
