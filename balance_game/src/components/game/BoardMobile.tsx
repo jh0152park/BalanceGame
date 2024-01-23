@@ -1,5 +1,5 @@
 import { Center, Text, VStack } from "@chakra-ui/react";
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/ProjectCommon";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/projectCommon";
 
 interface IBoradProps {
     bgColor: string;

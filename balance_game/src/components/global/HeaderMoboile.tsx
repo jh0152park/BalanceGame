@@ -1,9 +1,9 @@
 import { Grid, HStack, Heading, VStack } from "@chakra-ui/react";
-import { ColorTable } from "../../Colors";
+import { ColorTable } from "../../colors";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { CurrentCategory, IsUserLoggedIn } from "../../global/ProjectCommon";
-import { CATEGORIES } from "../../ProjectTypes";
+import { CurrentCategory, IsUserLoggedIn } from "../../global/projectCommon";
+import { CATEGORIES } from "../../projectTypes";
 import CategoryButton from "./header/CategoryButton";
 import SurveyButton from "./header/SurveyButton";
 import MypageButton from "./header/MypageButton";

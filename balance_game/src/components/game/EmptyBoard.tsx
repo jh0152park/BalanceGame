@@ -1,6 +1,6 @@
 import { Center, HStack, Heading } from "@chakra-ui/react";
 import Board from "./Board";
-import { ColorTable } from "../../Colors";
+import { ColorTable } from "../../colors";
 
 export default function EmptyBoard() {
     return (

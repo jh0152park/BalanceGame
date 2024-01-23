@@ -1,5 +1,5 @@
 import { Center, HStack, Image, Text } from "@chakra-ui/react";
-import { onKakaoClick, onNaverClick } from "./SocialLogin";
+import { onKakaoClick, onNaverClick } from "./socialLogin";
 
 interface IProps {
     width?: number;

@@ -7,7 +7,7 @@ import {
     CurrentMode,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
-} from "../../global/ProjectCommon";
+} from "../../global/projectCommon";
 import HeaderMobile from "../../components/global/HeaderMoboile";
 
 export default function Layout() {

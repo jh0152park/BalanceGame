@@ -6,7 +6,7 @@ import {
     VStack,
     keyframes,
 } from "@chakra-ui/react";
-import { ColorTable } from "../../Colors";
+import { ColorTable } from "../../colors";
 
 export default function Preview() {
     const fontColors = keyframes`

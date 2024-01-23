@@ -1,9 +1,9 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 import { QueryFunctionContext } from "react-query";
-import { IPostSurveyParams } from "./ProjectTypes";
+import { IPostSurveyParams } from "./projectTypes";
 import { useRecoilValue } from "recoil";
-import { UserInformation } from "./global/ProjectCommon";
+import { UserInformation } from "./global/projectCommon";
 
 const axciosInstance = axios.create({
     baseURL: process.env.REACT_APP_BASE_API_URL,

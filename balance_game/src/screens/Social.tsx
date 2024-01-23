@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { IsUserLoggedIn, UserInformation } from "../global/ProjectCommon";
+import { IsUserLoggedIn, UserInformation } from "../global/projectCommon";
 import { useToast } from "@chakra-ui/react";
 
 export default function Social() {

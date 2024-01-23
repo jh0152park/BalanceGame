@@ -1,8 +1,8 @@
 import { Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { CATEGORIES_ENG } from "../../../ProjectTypes";
+import { CATEGORIES_ENG } from "../../../projectTypes";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { CurrentCategory, CurrentMode } from "../../../global/ProjectCommon";
+import { CurrentCategory, CurrentMode } from "../../../global/projectCommon";
 
 interface IProps {
     category: string;

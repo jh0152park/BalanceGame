@@ -1,7 +1,7 @@
 import { Text, VStack } from "@chakra-ui/react";
 import { IWritedComment } from "../../screens/Mypage";
 import { useRecoilValue } from "recoil";
-import { CurrentMode } from "../../global/ProjectCommon";
+import { CurrentMode } from "../../global/projectCommon";
 
 export default function PrinkComment({ comment }: { comment: IWritedComment }) {
     const isMobile = useRecoilValue(CurrentMode) === "mobile";
