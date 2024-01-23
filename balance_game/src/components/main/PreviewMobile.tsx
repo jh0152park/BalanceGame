@@ -1,11 +1,4 @@
-import {
-    Box,
-    Center,
-    HStack,
-    Heading,
-    VStack,
-    keyframes,
-} from "@chakra-ui/react";
+import { Box, Center, Heading, VStack, keyframes } from "@chakra-ui/react";
 import { ColorTable } from "../../colors";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../global/projectCommon";
 

@@ -1,13 +1,6 @@
 import {
-    AbsoluteCenter,
-    Box,
     Button,
-    Center,
-    Divider,
-    FormControl,
-    FormLabel,
     HStack,
-    Image,
     Input,
     Modal,
     ModalBody,
@@ -24,7 +17,6 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { signUpWithEmail } from "../../Api";
 import { ISignUpResponse } from "../../projectTypes";
-import { onKakaoClick, onNaverClick } from "../../utils/logins/socialLogin";
 import SocialButton from "../../utils/logins/SocialButton";
 
 export default function RegisterModal({ isOpen, onClose }: IModalProps) {

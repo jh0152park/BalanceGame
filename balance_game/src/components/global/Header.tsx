@@ -1,4 +1,4 @@
-import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { HStack, Heading, VStack } from "@chakra-ui/react";
 import { ColorTable } from "../../colors";
 import { CATEGORIES } from "../../projectTypes";
 import CategoryButton from "./header/CategoryButton";
