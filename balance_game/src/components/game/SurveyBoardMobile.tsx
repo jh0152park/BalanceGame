@@ -22,7 +22,7 @@ import { FcLike, FcDislike } from "react-icons/fc";
 import Comment from "./Comment";
 import { useMutation } from "react-query";
 import { disLikeSurvey, likeSurvey, selectSurvey } from "../../Api";
-import { go_to_top } from "../../utils/Util";
+import { go_to_top } from "../../Util";
 import GoogleAds from "../../screens/defaults/GoogleAds";
 
 export default function SurveyBoardMobile({ games }: { games: IGame[] }) {

@@ -16,7 +16,7 @@ import { useMutation } from "react-query";
 import { createGame } from "../Api";
 import { useRecoilValue } from "recoil";
 import { CurrentMode, UserInformation } from "../global/ProjectCommon";
-// import { go_to_top } from "../utils/Util";
+import { go_to_top } from "../Util";
 
 export default function Survey() {
     const toast = useToast();
@@ -40,7 +40,7 @@ export default function Survey() {
             });
             reset();
             navigate("/main");
-            // go_to_top(0);
+            go_to_top(0);
         },
         onError: (result: any) => {
             console.log("post survey error");
