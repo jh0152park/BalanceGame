@@ -20,7 +20,7 @@ import { ISignInResponse } from "../../ProjectTypes";
 import { useSetRecoilState } from "recoil";
 import { IsUserLoggedIn, UserInformation } from "../../global/ProjectCommon";
 import SocialButton from "../../utils/logins/SocialButton";
-import { go_to_top } from "../../utils/Util";
+import { go_to_top } from "../../Util";
 
 export default function LoginModal({ isOpen, onClose }: IModalProps) {
     const toast = useToast();
