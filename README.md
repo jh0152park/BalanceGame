@@ -1,3 +1,5 @@
+#URL: https://balancegame.pages.dev
+
 # BalanceGame_Front
 
 사용자가 참여하는 밸런스게임 토이 프로젝트
