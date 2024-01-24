@@ -167,7 +167,7 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                 logoUrl={kakaoLogo}
                                 social="카카오"
                             />
-                            {/* <SocialButton
+                            <SocialButton
                                 width={400}
                                 height={40}
                                 logoWidth={20}
@@ -176,7 +176,7 @@ export default function RegisterModal({ isOpen, onClose }: IModalProps) {
                                 bgColor="#03C75A"
                                 logoUrl={naverLogo}
                                 social="네이버"
-                            /> */}
+                            />
                         </VStack>
                     </VStack>
                 </ModalBody>

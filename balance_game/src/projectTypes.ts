@@ -5,7 +5,8 @@ export type CATEGORY =
     | "연애"
     | "정치"
     | "오락"
-    | "성인"
+    | "학교"
+    | "직장"
     | "자동차"
     | "스포츠"
     | "개쌉오바";
@@ -17,7 +18,8 @@ export const CATEGORIES: CATEGORY[] = [
     "연애",
     "정치",
     "오락",
-    "성인",
+    "학교",
+    "직장",
     "자동차",
     "스포츠",
     "개쌉오바",
@@ -31,7 +33,8 @@ type ObjectType = {
     연애: string;
     정치: string;
     오락: string;
-    성인: string;
+    학교: string;
+    직장: string;
     자동차: string;
     스포츠: string;
     개쌉오바: string;
@@ -44,7 +47,8 @@ export const CATEGORIES_ENG: ObjectType = {
     연애: "relationship",
     정치: "politics",
     오락: "entertainment",
-    성인: "adult",
+    학교: "school",
+    직장: "work",
     자동차: "car",
     스포츠: "sport",
     개쌉오바: "nightmare",
