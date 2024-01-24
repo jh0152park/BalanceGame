@@ -1,4 +1,4 @@
-#URL: https://balancegame.pages.dev
+# URL: https://balancegame.pages.dev
 
 # BalanceGame_Front
 
