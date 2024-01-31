@@ -24,7 +24,7 @@ export default function Layout() {
         >
             {!is_home ? isMobile ? <HeaderMobile /> : <Header /> : null}
             <Outlet />
-            {!isMobile ? (
+            {/* {!isMobile ? (
                 <>
                     <Box w={"200px"} position={"absolute"} left={0} top={0}>
                         <GoogleAds />
@@ -63,7 +63,7 @@ export default function Layout() {
                         <GoogleAds />
                     </Box>
                 </>
-            )}
+            )} */}
         </Box>
     );
 }
