@@ -7,6 +7,7 @@ export type CATEGORY =
     | "오락"
     | "학교"
     | "직장"
+    | "코딩"
     | "자동차"
     | "스포츠"
     | "개쌉오바";
@@ -20,6 +21,7 @@ export const CATEGORIES: CATEGORY[] = [
     "오락",
     "학교",
     "직장",
+    "코딩",
     "자동차",
     "스포츠",
     "개쌉오바",
@@ -35,6 +37,7 @@ type ObjectType = {
     오락: string;
     학교: string;
     직장: string;
+    코딩: string;
     자동차: string;
     스포츠: string;
     개쌉오바: string;
@@ -49,6 +52,7 @@ export const CATEGORIES_ENG: ObjectType = {
     오락: "entertainment",
     학교: "school",
     직장: "work",
+    코딩: "coding",
     자동차: "car",
     스포츠: "sport",
     개쌉오바: "nightmare",
