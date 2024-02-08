@@ -4,6 +4,7 @@ import {
     HStack,
     Heading,
     Icon,
+    Spinner,
     Text,
     VStack,
 } from "@chakra-ui/react";
@@ -22,6 +23,7 @@ import { go_to_top } from "../../utils/util";
 export default function SurveyBoard({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
     const [sequence, setSequence] = useState<number[]>([]);
+    const [updateGame, setUpdateGame] = useState<any>({});
     const [sequenceIndex, setSequenceIndex] = useState(0);
     const [isSelected, setIsSelected] = useState(false);
     const [isLeftClick, setIsLeftClick] = useState(false);
@@ -36,10 +38,12 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
     const seleceMutation = useMutation(selectSurvey, {
         onMutate: () => {
             console.log("select mutation start");
+            setUpdateGame({} as any);
         },
         onSuccess: (result) => {
             console.log("select mutation success");
             console.log(result);
+            setUpdateGame(result);
         },
         onError: (result) => {
             console.log("select mutation failed");
@@ -91,6 +95,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
         setIsRightClick(false);
         setLikeClick(false);
         setDisLikeClick(false);
+        setUpdateGame({} as any);
         setSequenceIndex((prev) => prev + 1);
     }
 
@@ -155,6 +160,7 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
 
     // console.log(games);
     // console.log(sequence);
+
     return (
         <>
             {sequence.slice(sequenceIndex, sequenceIndex + 1).map((survey) => (
@@ -182,11 +188,15 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                     }}
                                     onClick={nextSurvey}
                                 >
-                                    <Heading>
-                                        {sequenceIndex !== games.length - 1
-                                            ? "클릭해서 다음 질문으로"
-                                            : "마지막 질문이었습니다, 새로운 질문을 등록해보세요!"}
-                                    </Heading>
+                                    {seleceMutation.isLoading ? (
+                                        <Spinner size="lg" />
+                                    ) : (
+                                        <Heading>
+                                            {sequenceIndex !== games.length - 1
+                                                ? "클릭해서 다음 질문으로"
+                                                : "마지막 질문이었습니다, 새로운 질문을 등록해보세요!"}
+                                        </Heading>
+                                    )}
                                 </Box>
                             </Center>
                         )}
@@ -232,23 +242,18 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 {!isSelected ? (
                                     games[sequence[sequenceIndex]].game[0]
                                         .description
-                                ) : (
+                                ) : !seleceMutation.isLoading ? (
                                     <VStack>
                                         <Text>
-                                            {
-                                                games[sequence[sequenceIndex]]
-                                                    .game[0].selectedCount
-                                            }{" "}
+                                            {updateGame.game[0].selectedCount}{" "}
                                             표
                                         </Text>
                                         <Text>
-                                            {
-                                                games[sequence[sequenceIndex]]
-                                                    .game[0].selectedRatio
-                                            }{" "}
-                                            %
+                                            {updateGame.game[0].selectedRatio} %
                                         </Text>
                                     </VStack>
+                                ) : (
+                                    <Spinner />
                                 )}
                             </Center>
                         </VStack>
@@ -293,23 +298,18 @@ export default function SurveyBoard({ games }: { games: IGame[] }) {
                                 {!isSelected ? (
                                     games[sequence[sequenceIndex]].game[1]
                                         .description
-                                ) : (
+                                ) : !seleceMutation.isLoading ? (
                                     <VStack>
                                         <Text>
-                                            {
-                                                games[sequence[sequenceIndex]]
-                                                    .game[1].selectedCount
-                                            }{" "}
+                                            {updateGame.game[1].selectedCount}{" "}
                                             표
                                         </Text>
                                         <Text>
-                                            {
-                                                games[sequence[sequenceIndex]]
-                                                    .game[1].selectedRatio
-                                            }{" "}
-                                            %
+                                            {updateGame.game[1].selectedRatio} %
                                         </Text>
                                     </VStack>
+                                ) : (
+                                    <Spinner />
                                 )}
                             </Center>
                         </VStack>

@@ -4,6 +4,7 @@ import {
     HStack,
     Heading,
     Icon,
+    Spinner,
     Text,
     VStack,
 } from "@chakra-ui/react";
@@ -26,6 +27,7 @@ import { go_to_top } from "../../utils/util";
 export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
     const navigate = useNavigate();
     const [sequence, setSequence] = useState<number[]>([]);
+    const [updateGame, setUpdateGame] = useState<any>({});
     const [sequenceIndex, setSequenceIndex] = useState(0);
     const [isSelected, setIsSelected] = useState(false);
     const [isLeftClick, setIsLeftClick] = useState(false);
@@ -40,10 +42,12 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
     const seleceMutation = useMutation(selectSurvey, {
         onMutate: () => {
             console.log("select mutation start");
+            setUpdateGame({} as any);
         },
         onSuccess: (result) => {
             console.log("select mutation success");
             console.log(result);
+            setUpdateGame(result);
         },
         onError: (result) => {
             console.log("select mutation failed");
@@ -95,6 +99,7 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
         setIsRightClick(false);
         setLikeClick(false);
         setDisLikeClick(false);
+        setUpdateGame({} as any);
         setSequenceIndex((prev) => prev + 1);
     }
 
@@ -184,15 +189,19 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
                                 zIndex="99"
                             >
                                 <Box color="black" onClick={nextSurvey}>
-                                    <Text
-                                        fontSize="30px"
-                                        fontWeight="bold"
-                                        textAlign="center"
-                                    >
-                                        {sequenceIndex !== games.length - 1
-                                            ? "클릭해서 다음 질문으로"
-                                            : "끝! 새질문을 등록해보세요!"}
-                                    </Text>
+                                    {seleceMutation.isLoading ? (
+                                        <Spinner />
+                                    ) : (
+                                        <Text
+                                            fontSize="30px"
+                                            fontWeight="bold"
+                                            textAlign="center"
+                                        >
+                                            {sequenceIndex !== games.length - 1
+                                                ? "클릭해서 다음 질문으로"
+                                                : "끝! 새질문을 등록해보세요!"}
+                                        </Text>
+                                    )}
                                 </Box>
                             </Center>
                         )}
@@ -222,31 +231,33 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
                                                 .game[0].description
                                         }
                                     </Text>
-                                    {isSelected && (
-                                        <VStack
-                                            mt="10px"
-                                            fontSize="15px"
-                                            color="black"
-                                            fontWeight="bold"
-                                        >
-                                            <Text>
-                                                {
-                                                    games[
-                                                        sequence[sequenceIndex]
-                                                    ].game[0].selectedCount
-                                                }{" "}
-                                                표
-                                            </Text>
-                                            <Text>
-                                                {
-                                                    games[
-                                                        sequence[sequenceIndex]
-                                                    ].game[0].selectedRatio
-                                                }{" "}
-                                                %
-                                            </Text>
-                                        </VStack>
-                                    )}
+                                    {isSelected ? (
+                                        !seleceMutation.isLoading ? (
+                                            <VStack
+                                                mt="10px"
+                                                fontSize="15px"
+                                                color="black"
+                                                fontWeight="bold"
+                                            >
+                                                <Text>
+                                                    {
+                                                        updateGame.game[0]
+                                                            .selectedCount
+                                                    }{" "}
+                                                    표
+                                                </Text>
+                                                <Text>
+                                                    {
+                                                        updateGame.game[0]
+                                                            .selectedRatio
+                                                    }{" "}
+                                                    %
+                                                </Text>
+                                            </VStack>
+                                        ) : (
+                                            <Spinner />
+                                        )
+                                    ) : null}
                                 </VStack>
                                 {isLeftClick && (
                                     <Heading
@@ -284,31 +295,33 @@ export default function SurveyBoardMobile({ games }: { games: IGame[] }) {
                                                 .game[1].description
                                         }
                                     </Text>
-                                    {isSelected && (
-                                        <VStack
-                                            mt="10px"
-                                            fontSize="15px"
-                                            color="black"
-                                            fontWeight="bold"
-                                        >
-                                            <Text>
-                                                {
-                                                    games[
-                                                        sequence[sequenceIndex]
-                                                    ].game[1].selectedCount
-                                                }{" "}
-                                                표
-                                            </Text>
-                                            <Text>
-                                                {
-                                                    games[
-                                                        sequence[sequenceIndex]
-                                                    ].game[1].selectedRatio
-                                                }{" "}
-                                                %
-                                            </Text>
-                                        </VStack>
-                                    )}
+                                    {isSelected ? (
+                                        !seleceMutation.isLoading ? (
+                                            <VStack
+                                                mt="10px"
+                                                fontSize="15px"
+                                                color="black"
+                                                fontWeight="bold"
+                                            >
+                                                <Text>
+                                                    {
+                                                        updateGame.game[1]
+                                                            .selectedCount
+                                                    }{" "}
+                                                    표
+                                                </Text>
+                                                <Text>
+                                                    {
+                                                        updateGame.game[1]
+                                                            .selectedRatio
+                                                    }{" "}
+                                                    %
+                                                </Text>
+                                            </VStack>
+                                        ) : (
+                                            <Spinner />
+                                        )
+                                    ) : null}
                                 </VStack>
 
                                 {isRightClick && (
