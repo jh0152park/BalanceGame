@@ -8,6 +8,7 @@ import { CurrentCategory, IsUserLoggedIn } from "../../global/projectCommon";
 import SurveyButton from "./header/SurveyButton";
 import RegisterButton from "./header/RegisterButton";
 import MypageButton from "./header/MypageButton";
+import AboutUsButton from "./header/AboutUsButton";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -43,6 +44,7 @@ export default function Header() {
                 <SurveyButton />
 
                 {isUserLoggedIn ? <MypageButton /> : <RegisterButton />}
+                <AboutUsButton />
             </HStack>
         </VStack>
     );

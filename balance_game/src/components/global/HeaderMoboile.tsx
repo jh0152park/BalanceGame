@@ -8,6 +8,7 @@ import CategoryButton from "./header/CategoryButton";
 import SurveyButton from "./header/SurveyButton";
 import MypageButton from "./header/MypageButton";
 import RegisterButton from "./header/RegisterButton";
+import AboutUsButton from "./header/AboutUsButton";
 
 export default function HeaderMobile() {
     const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function HeaderMobile() {
             <HStack justifyContent="center" w="100%" mt="10px" spacing="30px">
                 <SurveyButton />
                 {isUserLoggedIn ? <MypageButton /> : <RegisterButton />}
+                <AboutUsButton />
             </HStack>
         </VStack>
     );
