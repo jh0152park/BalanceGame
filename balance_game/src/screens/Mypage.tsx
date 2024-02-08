@@ -154,9 +154,7 @@ export default function Mypage() {
                                     <Center color={ColorTable.orange}>
                                         내 질문
                                     </Center>
-                                    <Center>
-                                        {data?.writedComments.length}
-                                    </Center>
+                                    <Center>{data?.createdGames.length}</Center>
                                 </VStack>
                                 <VStack>
                                     <Center color={ColorTable.orange}>
