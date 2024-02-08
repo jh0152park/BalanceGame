@@ -12,6 +12,7 @@ import Survey from "./screens/Survey";
 import Social from "./screens/Social";
 import { useSetRecoilState } from "recoil";
 import { CurrentMode } from "./global/projectCommon";
+import AboutUs from "./screens/AbousUs";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: "mypage",
                 element: <Mypage />,
+            },
+            {
+                path: "aboutus",
+                element: <AboutUs />,
             },
             {
                 path: "survey",
